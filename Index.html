@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galaxy Heights – Post-Sales Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.5/dist/index.global.js"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --color-ink: #13233a;
+    --color-ink-soft: #2c4059;
+    --color-paper: #f6f3ec;
+    --color-line: #e4ded1;
+    --color-line-strong: #cfc5b0;
+    --color-brass: #a17a2e;
+    --color-gold: #e2c27a;
+    --color-muted: #6b7482;
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @layer components {
+    .crest { @apply grid h-10 w-10 flex-none place-items-center rounded-full bg-ink font-display text-lg font-bold text-gold; }
+    .lbl { @apply mb-1.5 block text-[13px] font-semibold tracking-wide text-ink-soft; }
+    .control { @apply block h-11 w-full min-w-0 rounded-lg border border-line-strong bg-white/90 px-3 text-[15px] text-ink outline-none transition placeholder:text-slate-400 focus:border-ink focus:ring-4 focus:ring-ink/15; }
+    .control.is-invalid { @apply border-red-500 bg-red-50/80 focus:ring-red-500/15; }
+    .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-line-strong bg-white px-4 text-sm font-medium text-ink transition hover:border-ink focus-visible:ring-4 focus-visible:ring-brass/40 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:border-line-strong; }
+    .btn-primary { @apply border-ink bg-ink font-semibold text-white shadow-lg shadow-ink/25 hover:bg-[#0c1829] disabled:bg-ink disabled:shadow-none disabled:hover:border-ink; }
+    .badge { @apply inline-flex min-w-0 items-center gap-2 rounded-full border border-line bg-white py-1 pr-3 pl-1 text-[13px] font-medium; }
+    .avatar { @apply grid h-7 w-7 flex-none place-items-center rounded-full bg-gold text-xs font-bold text-ink; }
+    .card { @apply rounded-2xl border border-line bg-white shadow-sm shadow-ink/5; }
+    .step { @apply p-5 sm:p-6; }
+    .step-head { @apply mb-4 flex items-center gap-3; }
+    .step-num { @apply grid h-8 w-8 flex-none place-items-center rounded-full border border-line-strong text-sm font-semibold text-ink-soft transition; }
+    .step.done .step-num { @apply border-ink bg-ink text-white; }
+    .step h2 { @apply text-base font-semibold sm:text-lg; }
+    .step-val { @apply ml-auto truncate text-sm font-semibold text-brass; }
+    .opts { @apply grid gap-3; }
+    .opt { @apply relative block cursor-pointer; }
+    .opt-box { @apply flex h-full min-h-14 flex-col justify-center rounded-xl border border-line-strong bg-white px-4 py-3 transition hover:border-ink-soft; }
+    .opt-center .opt-box { @apply items-center text-center; }
+    .opt-title { @apply text-[15px] leading-tight font-semibold; }
+    .opt-sub { @apply mt-1 text-xs text-muted; }
+    .opt-check { @apply absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-gold text-[11px] font-bold text-ink; }
+    .opt input:checked + .opt-box { @apply border-ink bg-ink text-white shadow-md shadow-ink/20; }
+    .opt input:checked + .opt-box .opt-sub { @apply text-white/70; }
+    .opt input:checked ~ .opt-check { @apply grid; }
+    .opt-center input:checked ~ .opt-check { @apply hidden; }
+    .opt input:focus-visible + .opt-box { @apply ring-4 ring-brass/40; }
+    .sum-row { @apply flex items-center justify-between gap-3 py-2.5 text-sm; }
+    .route-file { @apply mt-1.5 flex items-start gap-2 text-sm leading-snug font-semibold break-words text-ink; }
+  }
+</style>
+<style>
+  [hidden] { display: none !important; }
+  /* Views fade with opacity only: a transform on a view would pin the phone summary bar to the view, not the screen */
+  .view-in { animation: viewIn .35s ease; }
+  .fade-out { animation: fadeOut .18s ease both; }
+  .shake { animation: shake .35s ease; }
+  .spin { animation: spin .7s linear infinite; }
+  @keyframes viewIn { from { opacity: 0; } }
+  @keyframes fadeOut { to { opacity: 0; } }
+  @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .view-in, .fade-out, .shake { animation: none; } }
+</style>
+</head>
+<body class="min-h-dvh bg-paper font-sans text-[15px] leading-normal text-ink antialiased">
+
+<!-- ======================= LOGIN ======================= -->
+<section id="loginView" class="view relative grid min-h-dvh place-items-center overflow-hidden px-4 py-10" hidden>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -top-40 -left-32 h-[26rem] w-[26rem] rounded-full bg-gold/45 blur-3xl"></div>
+    <div class="absolute -right-32 -bottom-48 h-[30rem] w-[30rem] rounded-full bg-ink/20 blur-3xl"></div>
+    <div class="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-sky-200/50 blur-3xl"></div>
+  </div>
+
+  <form id="loginForm" class="relative w-full max-w-[400px] rounded-3xl border border-white/80 bg-white/55 p-7 shadow-2xl shadow-ink/10 backdrop-blur-xl sm:p-9" novalidate>
+    <div class="flex items-center gap-3">
+      <div class="crest" aria-hidden="true">GH</div>
+      <div>
+        <p class="font-display text-2xl leading-none font-semibold">Galaxy Heights</p>
+        <p class="mt-1 text-[11px] tracking-[.16em] text-muted uppercase">Post-sales portal</p>
+      </div>
+    </div>
+
+    <h1 class="mt-8 text-xl font-semibold">Sign in</h1>
+    <p class="mt-1 text-sm text-muted">Use your post-sales team account to continue.</p>
+
+    <div class="mt-6 grid gap-4">
+      <div>
+        <label class="lbl" for="loginUser">Email / Username</label>
+        <input id="loginUser" class="control" type="text" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="name@example.com">
+      </div>
+      <div>
+        <label class="lbl" for="loginPass">Password</label>
+        <div class="relative">
+          <input id="loginPass" class="control pr-12" type="password" autocomplete="current-password" placeholder="Enter your password">
+          <button type="button" id="togglePass" class="absolute inset-y-0 right-0 grid w-11 place-items-center rounded-r-lg text-muted transition hover:text-ink focus-visible:text-ink focus-visible:outline-none" aria-label="Show password" aria-pressed="false">
+            <svg id="eyeOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="eyeOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="m3 3 18 18"/><path d="M10.6 5.1A10.9 10.9 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.2"/><path d="M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7a10.6 10.6 0 0 0 5.4-1.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+          </button>
+        </div>
+      </div>
+      <p id="loginError" class="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-sm text-red-700" role="alert" hidden></p>
+      <button type="submit" id="loginBtn" class="btn btn-primary mt-1 h-12 w-full text-[15px]">Log in</button>
+    </div>
+  </form>
+</section>
+
+<!-- ======================= SELECTION DASHBOARD ======================= -->
+<section id="selectView" class="view min-h-dvh" hidden>
+  <header class="sticky top-0 z-30 border-b border-line bg-white/85 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
+      <div class="crest" aria-hidden="true">GH</div>
+      <div class="min-w-0 flex-1">
+        <p class="font-display text-xl leading-tight font-semibold sm:text-2xl">Galaxy Heights</p>
+        <p class="truncate text-xs text-muted">Property &amp; agreement selection</p>
+      </div>
+      <span class="badge" title="Signed in"><span class="avatar" id="userInitial">P</span><span class="hidden truncate sm:inline" id="userEmail"></span></span>
+      <button type="button" class="btn h-9 flex-none px-3" id="logoutBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pt-6 pb-44 sm:px-6 sm:pt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-8 lg:pb-12">
+    <div class="grid gap-5">
+      <div>
+        <h1 class="font-display text-3xl leading-tight font-semibold sm:text-4xl">Select property &amp; agreement</h1>
+        <p class="mt-1 max-w-[60ch] text-muted">Work through the four steps. The agreement page for your selection opens once everything is chosen.</p>
+      </div>
+
+      <section class="card step" data-step="tower" aria-labelledby="h-tower">
+        <div class="step-head"><span class="step-num">1</span><h2 id="h-tower">Choose tower</h2><span class="step-val"></span></div>
+        <div class="opts grid-cols-2 md:grid-cols-4" id="towerOpts" role="radiogroup" aria-labelledby="h-tower"></div>
+      </section>
+
+      <section class="card step" data-step="wing" aria-labelledby="h-wing">
+        <div class="step-head"><span class="step-num">2</span><h2 id="h-wing">Choose wing</h2><span class="step-val"></span></div>
+        <div class="opts grid-cols-3 sm:grid-cols-5" id="wingOpts" role="radiogroup" aria-labelledby="h-wing"></div>
+      </section>
+
+      <section class="card step" data-step="config" aria-labelledby="h-config">
+        <div class="step-head"><span class="step-num">3</span><h2 id="h-config">Choose flat configuration</h2><span class="step-val"></span></div>
+        <div class="opts grid-cols-3 sm:grid-cols-5" id="configOpts" role="radiogroup" aria-labelledby="h-config"></div>
+      </section>
+
+      <section class="card step" data-step="type" aria-labelledby="h-type">
+        <div class="step-head"><span class="step-num">4</span><h2 id="h-type">Choose agreement type</h2><span class="step-val"></span></div>
+        <div class="opts grid-cols-3" id="typeOpts" role="radiogroup" aria-labelledby="h-type"></div>
+      </section>
+    </div>
+
+    <!-- Live summary (laptop) -->
+    <aside class="hidden lg:sticky lg:top-24 lg:block" aria-label="Your selection">
+      <div class="card p-5">
+        <p class="text-[11.5px] font-semibold tracking-wider text-muted uppercase">Your selection</p>
+        <dl class="mt-2 divide-y divide-line" id="summaryList"></dl>
+        <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-line"><div class="h-full w-0 rounded-full bg-gold transition-all duration-300" id="sumBar"></div></div>
+        <p class="mt-2 text-xs text-muted" id="sumCount"></p>
+        <div class="mt-4 rounded-xl border border-line bg-paper/70 p-3.5" aria-live="polite">
+          <p class="text-[11px] font-semibold tracking-wider text-muted uppercase">Opens</p>
+          <p class="route-file" data-route-file></p>
+          <p class="mt-1.5 text-xs text-muted" data-route-note></p>
+        </div>
+        <button type="button" class="proceed btn btn-primary mt-4 h-12 w-full" disabled>Proceed &amp; Confirm Selection</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Live summary (phone / tablet) -->
+  <div class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur lg:hidden">
+    <div class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+      <div class="mb-2.5 text-sm">
+        <div class="flex items-center justify-between gap-3">
+          <p class="min-w-0 truncate font-medium" id="mSummary"></p>
+          <p class="flex-none text-xs text-muted" id="mCount"></p>
+        </div>
+        <p class="mt-0.5 truncate text-xs text-muted" id="mRoute" aria-live="polite"></p>
+      </div>
+      <button type="button" class="proceed btn btn-primary h-12 w-full" disabled>Proceed &amp; Confirm Selection</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ---------- configuration ---------- */
+  // Demo sign-in only: these values are readable by anyone who opens this file.
+  const DEMO_USER = 'Postsales@gmail.com';
+  const DEMO_PASS = 'Postsales@124';
+  const KEYS = { session: 'gh_session', selection: 'gh_selection', draft: 'gh_draft' };
+  const SESSION_MS = 12 * 60 * 60 * 1000;
+  const TOWERS = { 2: ['A', 'B'], 3: ['L', 'M', 'N', 'O', 'P'], 4: ['A', 'B'], 5: ['A', 'B'] };
+  const CONFIGS = ['1 RK', '1 BHK', '1.5 BHK', '2 BHK', '3 BHK'];
+  const TYPES = ['SELF', 'LOAN', 'OTP'];
+  const STEP_LABELS = { tower: 'Tower', wing: 'Wing', config: 'Configuration', type: 'Agreement type' };
+
+  /* ---------- route map ----------
+     One line per tower and configuration: the page each agreement type opens. Every wing of a tower opens
+     the same page (the wing is passed along in the URL). Edit any entry to point it at another file.
+       · SELF and LOAN share one page ("SELF AND LOAN IN …"); OTP has its own ("OTP IN …").
+       · 1.5 BHK and 2 BHK share the "2BHK" page.                                                          */
+  const ROUTES = {
+    2: {
+      '1 RK':    { SELF: 'SELF AND LOAN IN T2 1RK.html',  LOAN: 'SELF AND LOAN IN T2 1RK.html',  OTP: 'OTP IN T2 1RK.html' },
+      '1 BHK':   { SELF: 'SELF AND LOAN IN T2 1BHK.html', LOAN: 'SELF AND LOAN IN T2 1BHK.html', OTP: 'OTP IN T2 1BHK.html' },
+      '1.5 BHK': { SELF: 'SELF AND LOAN IN T2 2BHK.html', LOAN: 'SELF AND LOAN IN T2 2BHK.html', OTP: 'OTP IN T2 2BHK.html' },
+      '2 BHK':   { SELF: 'SELF AND LOAN IN T2 2BHK.html', LOAN: 'SELF AND LOAN IN T2 2BHK.html', OTP: 'OTP IN T2 2BHK.html' },
+      '3 BHK':   { SELF: 'SELF AND LOAN IN T2 3BHK.html', LOAN: 'SELF AND LOAN IN T2 3BHK.html', OTP: 'OTP IN T2 3BHK.html' },
+    },
+    3: {
+      '1 RK':    { SELF: 'SELF AND LOAN IN T3 1RK.html',  LOAN: 'SELF AND LOAN IN T3 1RK.html',  OTP: 'OTP IN T3 1RK.html' },
+      '1 BHK':   { SELF: 'SELF AND LOAN IN T3 1BHK.html', LOAN: 'SELF AND LOAN IN T3 1BHK.html', OTP: 'OTP IN T3 1BHK.html' },
+      '1.5 BHK': { SELF: 'SELF AND LOAN IN T3 2BHK.html', LOAN: 'SELF AND LOAN IN T3 2BHK.html', OTP: 'OTP IN T3 2BHK.html' },
+      '2 BHK':   { SELF: 'SELF AND LOAN IN T3 2BHK.html', LOAN: 'SELF AND LOAN IN T3 2BHK.html', OTP: 'OTP IN T3 2BHK.html' },
+      '3 BHK':   { SELF: 'SELF AND LOAN IN T3 3BHK.html', LOAN: 'SELF AND LOAN IN T3 3BHK.html', OTP: 'OTP IN T3 3BHK.html' },
+    },
+    4: {
+      '1 RK':    { SELF: 'SELF AND LOAN IN T4 1RK.html',  LOAN: 'SELF AND LOAN IN T4 1RK.html',  OTP: 'OTP IN T4 1RK.html' },
+      '1 BHK':   { SELF: 'SELF AND LOAN IN T4 1BHK.html', LOAN: 'SELF AND LOAN IN T4 1BHK.html', OTP: 'OTP IN T4 1BHK.html' },
+      '1.5 BHK': { SELF: 'SELF AND LOAN IN T4 2BHK.html', LOAN: 'SELF AND LOAN IN T4 2BHK.html', OTP: 'OTP IN T4 2BHK.html' },
+      '2 BHK':   { SELF: 'SELF AND LOAN IN T4 2BHK.html', LOAN: 'SELF AND LOAN IN T4 2BHK.html', OTP: 'OTP IN T4 2BHK.html' },
+      '3 BHK':   { SELF: 'SELF AND LOAN IN T4 3BHK.html', LOAN: 'SELF AND LOAN IN T4 3BHK.html', OTP: 'OTP IN T4 3BHK.html' },
+    },
+    5: {
+      '1 RK':    { SELF: 'SELF AND LOAN IN T5 1RK.html',  LOAN: 'SELF AND LOAN IN T5 1RK.html',  OTP: 'OTP IN T5 1RK.html' },
+      '1 BHK':   { SELF: 'SELF AND LOAN IN T5 1BHK.html', LOAN: 'SELF AND LOAN IN T5 1BHK.html', OTP: 'OTP IN T5 1BHK.html' },
+      '1.5 BHK': { SELF: 'SELF AND LOAN IN T5 2BHK.html', LOAN: 'SELF AND LOAN IN T5 2BHK.html', OTP: 'OTP IN T5 2BHK.html' },
+      '2 BHK':   { SELF: 'SELF AND LOAN IN T5 2BHK.html', LOAN: 'SELF AND LOAN IN T5 2BHK.html', OTP: 'OTP IN T5 2BHK.html' },
+      '3 BHK':   { SELF: 'SELF AND LOAN IN T5 3BHK.html', LOAN: 'SELF AND LOAN IN T5 3BHK.html', OTP: 'OTP IN T5 3BHK.html' },
+    },
+  };
+  // Opened instead when an entry above is left empty, or (on a web server) when its page is not there yet.
+  const FALLBACK_PAGE = 'dashboard.html';
+
+  /* ---------- helpers ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+  const esc = v => String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (_) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (_) { return false; } },
+    del(...ks) { ks.forEach(k => { try { localStorage.removeItem(k); } catch (_) { /* storage unavailable */ } }); },
+  };
+  const getSession = () => {
+    const s = store.get(KEYS.session);
+    return s && s.user && Date.now() - s.at < SESSION_MS ? s : null;
+  };
+
+  /* ---------- selection state ---------- */
+  const sel = { tower: '', wing: '', config: '', type: '' };
+  function setSelection(src) {                   // accepts the URL names (config, type) and the stored names
+    src = src || {};
+    const config = src.config || src.configuration, type = src.type || src.agreementType;
+    sel.tower = has(TOWERS, src.tower) ? String(src.tower) : '';
+    sel.wing = sel.tower && TOWERS[sel.tower].includes(src.wing) ? src.wing : '';
+    sel.config = CONFIGS.includes(config) ? config : '';
+    sel.type = TYPES.includes(type) ? type : '';
+  }
+  // Saved on every change. "config" and "type" repeat the two values under the names the agreement pages read.
+  function saveSelection(targetPage) {
+    store.set(KEYS.selection, {
+      tower: sel.tower, wing: sel.wing, configuration: sel.config, agreementType: sel.type,
+      targetPage: targetPage || null, updatedAt: new Date().toISOString(),
+      config: sel.config, type: sel.type,
+    });
+  }
+  const doneCount = () => Object.values(sel).filter(Boolean).length;
+  const show = k => !sel[k] ? '' : k === 'tower' ? `Tower ${sel.tower}` : k === 'wing' ? `Wing ${sel.wing}` : sel[k];
+
+  /* ---------- route resolution ---------- */
+  const orList = a => (a.length > 1 ? a.slice(0, -1).join(', ') + ' or ' + a[a.length - 1] : a[0]);
+  const routeFor = (tower, config, type) => String(((ROUTES[tower] || {})[config] || {})[type] || '').trim();
+  function resolveRoute() {
+    if (doneCount() < 4) return null;
+    const page = routeFor(sel.tower, sel.config, sel.type);
+    if (!page) return { page: '', target: FALLBACK_PAGE, rule: '', unmapped: true, missing: false };
+    // every choice in this tower that opens the same page, e.g. "1.5 BHK or 2 BHK · SELF or LOAN"
+    const configs = CONFIGS.filter(c => TYPES.some(t => routeFor(sel.tower, c, t) === page));
+    const types = TYPES.filter(t => CONFIGS.some(c => routeFor(sel.tower, c, t) === page));
+    const rule = `Tower ${sel.tower} · any wing (${TOWERS[sel.tower].join(', ')}) · ${orList(configs)} · ${orList(types)}`;
+    return { page, target: page, rule, unmapped: false, missing: false };
+  }
+
+  // Served from a web server, a page that is not there yet opens the shared form instead of a "not found" page.
+  // Opened straight from disk (file://) a page cannot be checked, so the resolved page is opened as it is.
+  const served = /^https?:$/.test(location.protocol);
+  const probes = new Map();
+  function pageExists(file) {
+    if (!served) return Promise.resolve(true);
+    if (!probes.has(file)) {
+      probes.set(file, fetch(encodeURI(file), { method: 'HEAD', cache: 'no-store' })
+        .then(r => r.status !== 404 && r.status !== 410)
+        .catch(() => true));
+    }
+    return probes.get(file);
+  }
+
+  let route = null, routeSeq = 0;
+  function updateRoute() {
+    route = resolveRoute();
+    const seq = ++routeSeq;
+    renderRoute();
+    saveSelection(route && route.target);
+    if (route && !route.unmapped && served) {
+      pageExists(route.target).then(ok => {
+        if (ok || seq !== routeSeq) return;
+        route = { ...route, target: FALLBACK_PAGE, missing: true };
+        renderRoute();
+        saveSelection(route.target);
+      });
+    }
+  }
+  const FILE_ICON = '<svg class="mt-0.5 flex-none text-brass" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>';
+  function renderRoute() {
+    $$('[data-route-file]').forEach(el => {
+      el.innerHTML = route ? `${FILE_ICON}<span class="min-w-0">${esc(route.target)}</span>` : '<span class="font-normal text-slate-400">Complete all four steps</span>';
+    });
+    $$('[data-route-note]').forEach(el => {
+      el.textContent = !route ? 'The agreement page for your selection appears here.'
+        : route.unmapped ? 'No page is set for this selection in the route map, so the shared form opens.'
+        : route.missing ? `“${route.page}” is not on the server yet, so the shared form opens instead.`
+        : route.rule;
+    });
+    const tag = !route ? '' : route.unmapped || route.missing ? ' (fallback)' : '';
+    $('#mRoute').innerHTML = route ? `Opens <b class="font-semibold text-ink">${esc(route.target)}</b>${tag}` : 'Complete all four steps to see the agreement page.';
+  }
+
+  /* ---------- rendering ---------- */
+  function option(name, value, title, sub, extra) {
+    return `<label class="opt ${extra || ''}">
+      <input type="radio" class="sr-only" name="${name}" value="${esc(value)}"${sel[name] === value ? ' checked' : ''}>
+      <span class="opt-box"><span class="opt-title">${esc(title)}</span>${sub ? `<span class="opt-sub">${esc(sub)}</span>` : ''}</span>
+      <span class="opt-check" aria-hidden="true">✓</span></label>`;
+  }
+  const wingRange = w => w.length > 2 ? `${w[0]} – ${w[w.length - 1]}` : w.join(' · ');
+
+  function renderOptions() {
+    $('#towerOpts').innerHTML = Object.keys(TOWERS).map(t => option('tower', t, `Tower ${t}`, `Wings ${wingRange(TOWERS[t])}`)).join('');
+    renderWings();
+    $('#configOpts').innerHTML = CONFIGS.map(c => option('config', c, c, '', 'opt-center')).join('');
+    $('#typeOpts').innerHTML = TYPES.map(t => option('type', t, t, '', 'opt-center')).join('');
+  }
+  function renderWings() {
+    $('#wingOpts').innerHTML = sel.tower
+      ? TOWERS[sel.tower].map(w => option('wing', w, w, 'Wing', 'opt-center')).join('')
+      : '<p class="col-span-full rounded-xl border border-dashed border-line-strong px-4 py-4 text-sm text-muted">Choose a tower first to see its wings.</p>';
+  }
+  function update() {
+    const done = doneCount();
+    $$('[data-step]').forEach(step => {
+      const k = step.dataset.step;
+      step.classList.toggle('done', !!sel[k]);
+      $('.step-val', step).textContent = show(k);
+    });
+    $('#summaryList').innerHTML = Object.keys(STEP_LABELS).map(k =>
+      `<div class="sum-row"><dt class="text-muted">${STEP_LABELS[k]}</dt><dd class="${sel[k] ? 'font-semibold text-ink' : 'text-slate-400'}">${esc(show(k) || 'Not selected')}</dd></div>`).join('');
+    $('#sumBar').style.width = done * 25 + '%';
+    $('#sumCount').textContent = `${done} of 4 steps complete`;
+    $('#mSummary').textContent = done ? Object.keys(STEP_LABELS).map(show).filter(Boolean).join(' · ') : 'Nothing selected yet';
+    $('#mCount').textContent = `${done} / 4`;
+    $$('.proceed').forEach(b => { b.disabled = done < 4 || leaving; });
+    updateRoute();
+  }
+
+  /* ---------- views ---------- */
+  function showView(id) {
+    $$('.view').forEach(v => { v.hidden = v.id !== id; });
+    const v = $('#' + id);
+    v.classList.remove('view-in'); void v.offsetWidth; v.classList.add('view-in');
+    window.scrollTo(0, 0);
+  }
+  function openSelection() {
+    const s = getSession();
+    $('#userEmail').textContent = s.user;
+    $('#userInitial').textContent = s.user.charAt(0).toUpperCase();
+    $('.badge').title = 'Signed in as ' + s.user;
+    renderOptions();
+    update();
+    showView('selectView');
+  }
+  function go(url) {
+    document.body.classList.add('fade-out');
+    setTimeout(() => { location.href = url; }, 180);
+  }
+
+  /* ---------- login ---------- */
+  const loginForm = $('#loginForm'), userIn = $('#loginUser'), passIn = $('#loginPass');
+  const loginBtn = $('#loginBtn'), loginError = $('#loginError');
+
+  function showLoginError(msg, fields) {
+    loginError.textContent = msg;
+    loginError.hidden = false;
+    [userIn, passIn].forEach(el => {
+      const bad = fields.includes(el);
+      el.classList.toggle('is-invalid', bad);
+      el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+    });
+    loginForm.classList.remove('shake'); void loginForm.offsetWidth; loginForm.classList.add('shake');
+    fields[0].focus();
+  }
+  function clearLoginError() {
+    loginError.hidden = true;
+    [userIn, passIn].forEach(el => { el.classList.remove('is-invalid'); el.removeAttribute('aria-invalid'); });
+  }
+  function resetLoginButton() {
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'Log in';
+  }
+
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const user = userIn.value.trim(), pass = passIn.value;
+    if (!user || !pass) {
+      showLoginError('Enter your email and password.', [!user ? userIn : passIn]);
+      return;
+    }
+    if (user.toLowerCase() !== DEMO_USER.toLowerCase() || pass !== DEMO_PASS) {
+      showLoginError('Incorrect email or password. Please try again.', [userIn, passIn]);
+      passIn.select();
+      return;
+    }
+    clearLoginError();
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<span class="spin h-[18px] w-[18px] rounded-full border-[2.5px] border-white/35 border-t-white"></span>Signing in…';
+    store.set(KEYS.session, { user: DEMO_USER, at: Date.now() });
+    setTimeout(() => { resetLoginButton(); passIn.value = ''; openSelection(); }, 450);
+  });
+  [userIn, passIn].forEach(el => el.addEventListener('input', () => { if (!loginError.hidden) clearLoginError(); }));
+
+  $('#togglePass').addEventListener('click', e => {
+    const btn = e.currentTarget, showing = passIn.type === 'text';
+    passIn.type = showing ? 'password' : 'text';
+    btn.setAttribute('aria-pressed', String(!showing));
+    btn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+    $('#eyeOpen').toggleAttribute('hidden', !showing);
+    $('#eyeOff').toggleAttribute('hidden', showing);
+    passIn.focus();
+  });
+
+  $('#logoutBtn').addEventListener('click', () => {        // immediate: no confirmation step
+    store.del(KEYS.session, KEYS.selection, KEYS.draft);
+    setSelection({});
+    loginForm.reset();
+    clearLoginError();
+    showView('loginView');
+  });
+
+  /* ---------- selection events ---------- */
+  document.addEventListener('change', e => {
+    const input = e.target;
+    if (!input.matches('.opt input')) return;
+    sel[input.name] = input.value;
+    if (input.name === 'tower') { sel.wing = ''; renderWings(); }   // wing always resets when the tower changes
+    update();
+  });
+
+  /* ---------- proceed ---------- */
+  const PROCEED_LABEL = 'Proceed & Confirm Selection';
+  let leaving = false;
+  async function proceed() {
+    const r = resolveRoute();
+    if (!r || leaving) return;
+    leaving = true;
+    $$('.proceed').forEach(b => { b.disabled = true; b.textContent = 'Opening…'; });
+    const target = !r.unmapped && await pageExists(r.target) ? r.target : FALLBACK_PAGE;
+    const params = new URLSearchParams({ tower: sel.tower, wing: sel.wing, config: sel.config, type: sel.type });
+    saveSelection(target);
+    go(encodeURI(target) + '?' + params);
+  }
+  $$('.proceed').forEach(b => b.addEventListener('click', proceed));
+  window.addEventListener('pageshow', () => {               // coming back with the browser's Back button
+    document.body.classList.remove('fade-out');
+    if (!leaving) return;
+    leaving = false;
+    $$('.proceed').forEach(b => { b.textContent = PROCEED_LABEL; });
+    update();
+  });
+
+  /* ---------- start ---------- */
+  const query = new URLSearchParams(location.search);
+  setSelection(query.has('tower') ? Object.fromEntries(query) : store.get(KEYS.selection));
+  if (query.toString()) { try { history.replaceState(null, '', location.pathname); } catch (_) { /* file:// may refuse */ } }
+  if (getSession()) openSelection(); else showView('loginView');
+})();
+</script>
+</body>
+</html>

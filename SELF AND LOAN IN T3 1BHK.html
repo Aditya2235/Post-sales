@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galaxy Heights – Self &amp; Loan Draft Agreement – T3 1 BHK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.5/dist/index.global.js"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --color-ink: #13233a;
+    --color-ink-soft: #2c4059;
+    --color-paper: #f6f3ec;
+    --color-line: #e4ded1;
+    --color-line-strong: #cfc5b0;
+    --color-brass: #a17a2e;
+    --color-gold: #e2c27a;
+    --color-muted: #6b7482;
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @layer components {
+    .crest { @apply grid h-10 w-10 flex-none place-items-center rounded-full bg-ink font-display text-lg font-bold text-gold; }
+    .badge { @apply inline-flex min-w-0 items-center gap-2 rounded-full border border-line bg-white py-1 pr-3 pl-1 text-[13px] font-medium; }
+    .avatar { @apply grid h-7 w-7 flex-none place-items-center rounded-full bg-gold text-xs font-bold text-ink; }
+    .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-[13px]; }
+    .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-line-strong bg-white px-4 text-sm font-medium whitespace-nowrap text-ink transition hover:border-ink focus-visible:ring-4 focus-visible:ring-brass/40 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-45; }
+    .btn-primary { @apply border-ink bg-ink font-semibold text-white shadow-lg shadow-ink/25 hover:bg-[#0c1829] disabled:cursor-progress disabled:opacity-80; }
+    .link { @apply text-[13px] font-semibold text-brass underline-offset-2 hover:underline focus-visible:underline focus-visible:outline-none; }
+
+    .sec { @apply rounded-2xl border border-line bg-white shadow-sm shadow-ink/5; }
+    .sec-head { @apply flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-line px-5 py-4 sm:px-6; }
+    .sec-num { @apply grid h-8 w-8 flex-none place-items-center rounded-full border border-line-strong text-sm font-semibold text-ink-soft transition; }
+    .sec.done .sec-num { @apply border-emerald-600 bg-emerald-600 text-white; }
+    .sec-head h2 { @apply text-base leading-snug font-semibold sm:text-lg; }
+    .sec-sub { @apply text-xs text-muted; }
+    .sec-body { @apply px-5 py-5 sm:px-6 sm:py-6; }
+    .fields { @apply grid grid-cols-1 items-start gap-x-5 gap-y-4 md:grid-cols-2 lg:grid-cols-3; }
+    .group + .group { @apply mt-6 border-t border-line pt-6; }
+    .group-head { @apply mb-4 flex flex-wrap items-center justify-between gap-3; }
+    .group-head h3 { @apply text-xs font-semibold tracking-wider text-muted uppercase; }
+
+    .lbl-row { @apply mb-1.5 flex min-h-5 flex-wrap items-center justify-between gap-x-3 gap-y-1; }
+    .lbl { @apply text-[13px] font-semibold tracking-wide text-ink-soft; }
+    .req { @apply text-brass; }
+    .opt-pill { @apply ml-2 inline-block rounded-full border border-line bg-paper px-2 py-px align-middle text-[11px] font-semibold tracking-wide text-muted; }
+    .control { @apply block h-11 w-full min-w-0 rounded-lg border border-line-strong bg-white px-3 text-[15px] text-ink outline-none transition placeholder:text-slate-400 focus:border-ink focus:ring-4 focus:ring-ink/15; }
+    textarea.control { @apply h-auto min-h-20 resize-y py-2.5; }
+    .control[readonly] { @apply bg-slate-50 text-muted; }
+    .hint { @apply mt-1.5 text-xs text-muted; }
+    .err { @apply mt-1.5 hidden text-xs text-red-700; }
+    .invalid .control { @apply border-red-500 bg-red-50 focus:ring-red-500/15; }
+    .invalid .err { @apply block; }
+    .invalid .hint { @apply hidden; }
+    .check { @apply inline-flex cursor-pointer items-center gap-2 text-[13px] text-ink-soft select-none; }
+    .check input { @apply h-4 w-4 accent-ink; }
+
+    .switch { @apply inline-flex cursor-pointer items-center gap-2.5 text-[13px] font-medium text-ink-soft select-none; }
+    .track { @apply relative h-6 w-10 flex-none rounded-full bg-line-strong transition; }
+    .track::after { content: ""; @apply absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition; }
+    .switch input:checked + .track { @apply bg-ink; }
+    .switch input:checked + .track::after { @apply translate-x-4; }
+    .switch input:focus-visible + .track { @apply ring-4 ring-brass/40; }
+
+    .toast { @apply pointer-events-auto rounded-xl border border-line border-l-4 border-l-emerald-600 bg-white px-4 py-3 shadow-xl shadow-ink/20; }
+    .toast.error { @apply border-l-red-600; }
+    .toast.info { @apply border-l-brass; }
+  }
+</style>
+<style>
+  [hidden] { display: none !important; }
+  .spin { animation: spin .7s linear infinite; }
+  .fade-in { animation: fadeIn .25s ease both; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } }
+  @media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } }
+
+  /* Live preview (rendered Word pages) */
+  #pvDoc .docx-wrapper { background: transparent; padding: 20px 12px 8px; }
+  #pvDoc .docx-wrapper > section.docx { margin: 0 auto 24px; box-shadow: 0 2px 14px rgba(19, 35, 58, .16); }
+  /* Docked preview on wide screens: the form stays usable beside it */
+  body.pv-docked { padding-right: min(900px, 50vw); }
+  body.pv-docked #previewPane { background: transparent; backdrop-filter: none; pointer-events: none; }
+  body.pv-docked #previewPane .pv-panel { pointer-events: auto; width: min(900px, 50vw); max-width: none; }
+  body.pv-docked #toasts { right: calc(min(900px, 50vw) + 1rem); }
+</style>
+</head>
+<body class="min-h-dvh bg-paper font-sans text-[15px] leading-normal text-ink antialiased">
+
+<header class="sticky top-0 z-30 border-b border-line bg-white/85 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
+    <div class="crest" aria-hidden="true">GH</div>
+    <div class="min-w-0 flex-1">
+      <p class="font-display text-xl leading-tight font-semibold sm:text-2xl">Galaxy Heights</p>
+      <p class="truncate text-xs text-muted">Self &amp; Loan draft agreement · Tower 3 · 1 BHK</p>
+    </div>
+    <span class="badge" id="userBadge"><span class="avatar" id="userInitial">P</span><span class="hidden truncate sm:inline" id="userEmail"></span></span>
+    <button type="button" class="btn h-9 flex-none px-3" id="logoutBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span>Logout</span>
+    </button>
+  </div>
+</header>
+
+<!-- Selection summary bar -->
+<div class="border-b border-line bg-white/60">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-3 px-4 py-3 sm:px-6">
+    <a href="index.html" class="btn h-9 px-3" id="backBtn">← Back to Selection</a>
+    <div class="flex flex-wrap gap-2" id="selChips"></div>
+    <button type="button" class="chip ml-auto cursor-pointer transition hover:border-ink focus-visible:ring-4 focus-visible:ring-brass/40 focus-visible:outline-none" id="tplChip" aria-controls="tplCard" aria-expanded="false" title="Word template" hidden>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+      <span>Word template</span><b class="font-semibold text-emerald-700">✓</b>
+    </button>
+  </div>
+</div>
+
+<main class="mx-auto max-w-6xl px-4 pt-6 sm:px-6 sm:pt-8">
+  <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h1 class="font-display text-3xl leading-tight font-semibold sm:text-4xl">Self &amp; Loan agreement · 1&nbsp;BHK</h1>
+      <p class="mt-1 max-w-[62ch] text-muted">Fields marked <span class="req">*</span> are required; the execution date and the receipt payments are optional. Your entries are saved on this device as you type.</p>
+    </div>
+    <div class="w-full sm:w-56">
+      <div class="flex justify-between text-xs text-muted"><span>Progress</span><span id="progressCount">0 / 0</span></div>
+      <div class="mt-1.5 h-1.5 overflow-hidden rounded-full bg-line"><div class="h-full w-0 rounded-full bg-gold transition-all duration-300" id="progressBar"></div></div>
+    </div>
+  </div>
+
+  <!-- Word template -->
+  <section class="sec mb-5" id="tplCard" aria-live="polite" hidden>
+    <div class="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div class="flex min-w-0 items-start gap-3">
+        <span class="grid h-9 w-9 flex-none place-items-center rounded-lg bg-paper text-ink-soft" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+        </span>
+        <div class="min-w-0">
+          <p class="text-[13px] font-semibold tracking-wide text-ink-soft">Agreement template (.docx)</p>
+          <p class="mt-0.5 text-sm break-words text-muted" id="tplStatus">Loading…</p>
+        </div>
+      </div>
+      <div class="flex flex-none gap-2 self-start sm:self-auto">
+        <button type="button" class="btn" id="tplHide" hidden>Done</button>
+        <label class="btn cursor-pointer"><input type="file" id="tplFile" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="sr-only"><span id="tplBtn">Choose .docx</span></label>
+      </div>
+    </div>
+  </section>
+
+  <form id="form" class="grid gap-5" novalidate autocomplete="off">
+    <div id="sections" class="grid gap-5"></div>
+
+    <!-- 6. Receipt payment table -->
+    <section class="sec" id="sec-receipts" data-sec>
+      <div class="sec-head">
+        <span class="sec-num">6</span>
+        <div class="min-w-0 flex-1"><h2>Receipt payment table<span class="opt-pill">Optional</span></h2><p class="sec-sub">Each row is one payment received from the purchaser</p></div>
+      </div>
+      <div class="sec-body">
+        <div class="mb-3 hidden lg:grid-cols-[170px_minmax(0,1.3fr)_minmax(0,1.2fr)_170px_44px] gap-2.5 border-b border-line pb-2 text-[11.5px] font-semibold tracking-wider text-muted uppercase lg:grid" id="payHead" aria-hidden="true">
+          <div>Date</div>
+          <div>Cheque / NEFT / RTGS / UPI No.</div>
+          <div>Name of bank</div>
+          <div class="text-right">Amount (Rs.)</div>
+          <div></div>
+        </div>
+        <div id="payRows" class="grid gap-3 lg:gap-2.5"></div>
+        <p class="rounded-lg border border-dashed border-line-strong px-4 py-3 text-sm text-muted" id="payEmpty" hidden>No payments added. This table is optional — use “Add Row” to record a payment.</p>
+
+        <div class="mt-4 flex flex-col gap-4 border-t border-line pt-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <button type="button" class="btn self-start border-dashed text-ink-soft" id="addRow">+ Add Row</button>
+            <p class="hint" id="rowCap"></p>
+          </div>
+          <div class="text-right lg:pr-[54px]">
+            <p class="text-[11.5px] font-semibold tracking-wider text-muted uppercase">Total amount paid (Rs.)</p>
+            <p class="mt-0.5 text-2xl font-bold tabular-nums" id="totalPaid">Rs. 0</p>
+            <p class="mt-1 max-w-md text-sm text-ink-soft sm:ml-auto" id="totalWords">—</p>
+          </div>
+        </div>
+        <p class="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-[13px] text-amber-900" id="mismatch" hidden>
+          “Amount paid by customer” in section 5 (<span id="mismatchVal"></span>) differs from this table's total.
+          <button type="button" class="link" id="useTotal">Use the table total</button>
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Action footer -->
+    <div class="sticky bottom-0 z-20 -mx-4 border-t border-line bg-paper/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
+      <div class="flex items-center gap-2.5">
+        <button type="button" class="btn px-3 sm:px-4" id="dummyBtn"><span class="sm:hidden">Dummy</span><span class="hidden sm:inline">Fill Dummy Data</span></button>
+        <button type="button" class="btn px-3 sm:px-4" id="resetBtn"><span class="sm:hidden">Reset</span><span class="hidden sm:inline">Reset Form</span></button>
+        <button type="button" class="btn ml-auto px-3 sm:px-4" id="previewBtn">
+          <svg class="hidden sm:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Preview</span>
+        </button>
+        <button type="submit" class="btn btn-primary min-w-0 flex-1 sm:flex-none sm:px-8" id="generateBtn">Generate</button>
+      </div>
+    </div>
+  </form>
+  <div class="h-6"></div>
+</main>
+
+<template id="rowTpl">
+  <div class="r-row relative grid grid-cols-1 gap-3 rounded-xl border border-line bg-paper/50 p-4 sm:grid-cols-2 lg:grid-cols-[170px_minmax(0,1.3fr)_minmax(0,1.2fr)_170px_44px] lg:items-start lg:gap-2.5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0">
+    <p class="row-no pr-10 text-[13px] font-semibold text-ink-soft sm:col-span-2 lg:hidden">Payment 1</p>
+    <div class="cell"><span class="lbl mb-1.5 block lg:sr-only">Date</span>
+      <input type="date" class="control" data-r="date" aria-label="Payment date"></div>
+    <div class="cell"><span class="lbl mb-1.5 block lg:sr-only">Cheque / NEFT / RTGS / UPI No.</span>
+      <input class="control tabular-nums" data-r="ref" placeholder="e.g. NEFT – N316260012345" aria-label="Cheque, NEFT, RTGS or UPI number"></div>
+    <div class="cell"><span class="lbl mb-1.5 block lg:sr-only">Name of bank</span>
+      <input class="control" data-r="bank" placeholder="e.g. HDFC Bank" aria-label="Name of bank"></div>
+    <div class="cell"><span class="lbl mb-1.5 block lg:sr-only">Amount (Rs.)</span>
+      <input class="control tabular-nums lg:text-right" data-r="amount" data-type="money" inputmode="numeric" placeholder="0" aria-label="Amount in rupees"></div>
+    <button type="button" class="absolute top-3 right-3 grid h-8 w-8 place-items-center rounded-lg text-muted transition hover:bg-red-50 hover:text-red-700 focus-visible:ring-4 focus-visible:ring-brass/40 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted lg:static lg:h-11 lg:w-11 lg:border lg:border-line-strong lg:bg-white" data-del aria-label="Delete row" title="Delete row">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+    </button>
+  </div>
+</template>
+
+<!-- Live preview of the filled agreement -->
+<div id="previewPane" class="fixed inset-0 z-40 flex justify-end bg-ink/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="pvTitle" hidden>
+  <div class="pv-panel flex h-full w-full max-w-[900px] flex-col bg-[#e9e6df] shadow-2xl">
+    <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 border-b border-line bg-white px-4 py-3 sm:flex sm:gap-x-4 sm:px-5">
+      <div class="order-1 min-w-0 sm:flex-1">
+        <h2 id="pvTitle" class="text-base font-semibold">Live preview</h2>
+        <p class="truncate text-xs text-muted" id="pvStatus">Preparing…</p>
+      </div>
+      <div class="order-3 col-span-2 flex items-center justify-between gap-3 sm:order-2 sm:justify-end sm:gap-4">
+        <label class="check"><input type="checkbox" id="pvMark" checked> Mark filled values</label>
+        <button type="button" class="btn h-9 px-3" id="pvDownload">Generate</button>
+      </div>
+      <button type="button" class="btn order-2 h-9 w-9 px-0 text-lg sm:order-3" id="pvClose" aria-label="Close preview">×</button>
+    </div>
+    <p class="border-b border-amber-200 bg-amber-50 px-4 py-2 text-[13px] text-amber-900 sm:px-5" id="pvCheck" hidden></p>
+    <div class="min-h-0 flex-1 overflow-auto" id="pvBody"><div id="pvDoc"></div></div>
+  </div>
+</div>
+
+<!-- Confirmation card: Generate Document or Cancel -->
+<div id="confirmModal" class="fixed inset-0 z-50 grid place-items-center bg-ink/40 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+  <div class="fade-in w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+    <h2 id="confirmTitle" class="text-lg font-semibold">Generate the agreement?</h2>
+    <div class="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+      <button type="button" class="btn" id="confirmCancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="confirmGenerate">Generate Document</button>
+    </div>
+  </div>
+</div>
+
+<div class="pointer-events-none fixed inset-x-4 top-20 z-[60] grid gap-2.5 sm:left-auto sm:w-96" id="toasts" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* =====================================================================
+     1. Configuration (keep in step with index.html)
+     ===================================================================== */
+  const KEYS = { session: 'gh_session', selection: 'gh_selection', draft: 'gh_draft', payload: 'gh_agreement_payload', template: 'gh_template' };
+  const SESSION_MS = 12 * 60 * 60 * 1000;
+  const TOWERS = { 2: ['A', 'B'], 3: ['L', 'M', 'N', 'O', 'P'], 4: ['A', 'B'], 5: ['A', 'B'] };
+  const CONFIGS = ['1 RK', '1 BHK', '1.5 BHK', '2 BHK', '3 BHK'];
+  const TYPES = ['SELF', 'LOAN', 'OTP'];
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const SQM_PER_SQFT = 0.092903;
+  const FORM_CONFIGS = ['1 BHK'];                                        // flat type this agreement covers
+  // The 1 BHK Word template. It is picked up automatically when this page is served from the same folder as either
+  // file; otherwise choose it once with "Choose .docx" and it is remembered on this device.
+  const TEMPLATE_FILES = ['4. SELF & LOAN_DRAFT AGREEMENT T3-1BHK.docx', '4. SELF & LOAN_DRAFT AGREEMENT T3-1BHK_2.docx'];
+  // The booking clause ("Prior to the execution of these presents … has paid … a sum of Rs. … being part payment")
+  // records the amount already paid. If a template labels it <Agreement value>, it is still filled with that amount.
+  const BOOKING_CLAUSE_FIELD = 'amount_paid';
+  // Optional blanks left empty print as a line to fill in by hand, or as the template's own text where it had some.
+  const BLANK_FILL = { day: 8, month: 12, year_words: 14, total_paid: 10 };
+  const DEFAULT_ROWS = 4;                                                // rows in the template's receipt table
+  const LIBS = {
+    JSZip: ['https://cdn.jsdelivr.net/npm/jszip@3.10.2/dist/jszip.min.js', 'https://unpkg.com/jszip@3.10.2/dist/jszip.min.js'],
+    docx: ['https://cdn.jsdelivr.net/npm/docx-preview@0.4.1/dist/docx-preview.min.js', 'https://unpkg.com/docx-preview@0.4.1/dist/docx-preview.min.js'],
+  };
+
+  /* =====================================================================
+     2. Helpers
+     ===================================================================== */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+  const esc = v => String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (_) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (_) { return false; } },
+    del(...ks) { ks.forEach(k => { try { localStorage.removeItem(k); } catch (_) { /* storage unavailable */ } }); },
+  };
+
+  const ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const digits = v => String(v == null ? '' : v).replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+  const toNum = v => Number(digits(v) || 0);
+  function inr(v) {                                         // 6300000 -> 63,00,000
+    const d = digits(v);
+    if (d.length <= 3) return d;
+    return d.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + d.slice(-3);
+  }
+  function words(v) {                                       // 6300000 -> Sixty Three Lakh
+    const d = digits(v);
+    if (!d || d.length > 15) return '';
+    const n = Number(d);
+    if (n === 0) return 'Zero';
+    const two = x => x < 20 ? ONES[x] : TENS[Math.floor(x / 10)] + (x % 10 ? ' ' + ONES[x % 10] : '');
+    const three = x => (x >= 100 ? ONES[Math.floor(x / 100)] + ' Hundred' + (x % 100 ? ' ' : '') : '') + two(x % 100);
+    const belowCrore = x => {
+      const parts = [];
+      if (x >= 100000) { parts.push(two(Math.floor(x / 100000)) + ' Lakh'); x %= 100000; }
+      if (x >= 1000) { parts.push(two(Math.floor(x / 1000)) + ' Thousand'); x %= 1000; }
+      if (x) parts.push(three(x));
+      return parts.join(' ');
+    };
+    const crore = Math.floor(n / 10000000);
+    return [crore ? words(String(crore)) + ' Crore' : '', belowCrore(n % 10000000)].filter(Boolean).join(' ');
+  }
+  const rupeesWords = v => toNum(v) ? `Rupees ${words(v)} Only` : '';
+  const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'));
+  function yearWords(y) {                                   // 2026 -> Two Thousand and Twenty-Six
+    if (y < 2000 || y > 2099) return '';
+    const r = y - 2000;
+    const tail = r < 20 ? ONES[r] : TENS[Math.floor(r / 10)] + (r % 10 ? '-' + ONES[r % 10] : '');
+    return 'Two Thousand' + (r ? ' and ' + tail : '');
+  }
+  const fmtDate = iso => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? `${m[3]}/${m[2]}/${m[1]}` : ''; };
+  const clean = v => String(v || '').replace(/\s+/g, ' ').trim();
+  const oneLine = v => String(v || '').split('\n').map(clean).filter(Boolean).join(', ').replace(/,\s*,/g, ',');
+  const trim2 = x => String(Number(x.toFixed(2)));
+
+  function getSession() {
+    const s = store.get(KEYS.session);
+    return s && s.user && Date.now() - s.at < SESSION_MS ? s : null;
+  }
+  function validSelection(s) {                   // URL names (config, type) or the names index.html saves
+    if (!s) return null;
+    const config = s.config || s.configuration, type = s.type || s.agreementType;
+    if (!has(TOWERS, s.tower) || !TOWERS[s.tower].includes(s.wing) || !CONFIGS.includes(config) || !TYPES.includes(type)) return null;
+    return { tower: String(s.tower), wing: s.wing, config, type };
+  }
+  function readSelection() {                     // URL first, then the record index.html saved
+    const saved = store.get(KEYS.selection);
+    const fromUrl = validSelection(Object.fromEntries(new URLSearchParams(location.search)));
+    if (!fromUrl) return validSelection(saved);
+    store.set(KEYS.selection, {                  // keep the saved record in step, in the shape index.html uses
+      ...(saved && typeof saved === 'object' ? saved : {}),
+      tower: fromUrl.tower, wing: fromUrl.wing, configuration: fromUrl.config, agreementType: fromUrl.type,
+      targetPage: decodeURIComponent(location.pathname.split('/').pop() || '') || (saved && saved.targetPage) || null,
+      updatedAt: new Date().toISOString(), config: fromUrl.config, type: fromUrl.type,
+    });
+    return fromUrl;
+  }
+
+  /* =====================================================================
+     3. Guard: signed in, with a complete selection
+     ===================================================================== */
+  const session = getSession();
+  if (!session) { location.replace('index.html' + location.search); return; }
+  const sel = readSelection();
+  if (!sel) { location.replace('index.html'); return; }
+  const dedicated = sel.tower === '3' && (sel.type === 'SELF' || sel.type === 'LOAN') && FORM_CONFIGS.includes(sel.config);
+
+  /* =====================================================================
+     4. Form definition (one place, so every field is laid out the same way)
+     ===================================================================== */
+  const DAYS = Array.from({ length: 31 }, (_, i) => ordinal(i + 1));
+  const ERR = { pan: 'PAN is 5 letters, 4 digits, 1 letter (e.g. ABCDE1234F).', email: 'Enter a valid email address.', phone: 'Enter a 10-digit mobile number.', money: 'Enter an amount greater than zero.', decimal: 'Enter a number, e.g. 450 or 41.81.' };
+  const INPUTMODE = { money: 'numeric', decimal: 'decimal', phone: 'tel', email: 'email' };
+  const SAME_ADDR = '<label class="check"><input type="checkbox" id="sameAddr"> Same as applicant address</label>';
+  const CO_SWITCH = '<label class="switch"><input type="checkbox" id="hasCo" class="sr-only" checked><span class="track"></span>Include co-applicant</label>';
+
+  const SECTIONS = [
+    { id: 'exec', title: 'Execution date', optional: true, sub: 'Made at Mumbai on this … day of … , Year … — leave blank to date it by hand',
+      action: '<button type="button" class="link" id="todayBtn"><span class="sm:hidden">Today</span><span class="hidden sm:inline">Use today’s date</span></button>',
+      groups: [{ fields: [
+        { k: 'day', label: 'Day', options: DAYS, ph: 'Select day' },
+        { k: 'month', label: 'Month', options: MONTHS, ph: 'Select month' },
+        { k: 'year_words', label: 'Year in words', ph: 'e.g. Two Thousand and Twenty-Six', list: 'yearList' },
+      ] }] },
+    { id: 'parties', title: 'Applicant & co-applicant details', sub: 'Names and PAN exactly as on the PAN cards',
+      groups: [
+        { title: 'Primary applicant', fields: [
+          { k: 'applicant_name', label: 'Full name', span: 2, ph: 'Full name as on PAN card' },
+          { k: 'applicant_pan', label: 'PAN card number', type: 'pan', ph: 'ABCDE1234F' },
+          { k: 'applicant_address', label: 'Address', area: true, span: 3, ph: 'Flat / building, street, area, city, PIN code' },
+        ] },
+        { title: 'Co-applicant', head: CO_SWITCH, wrap: 'coFields', fields: [
+          { k: 'co_name', label: 'Full name', span: 2, ph: 'Full name as on PAN card' },
+          { k: 'co_pan', label: 'PAN card number', type: 'pan', ph: 'ABCDE1234F' },
+          { k: 'co_address', label: 'Address', area: true, span: 3, ph: 'Flat / building, street, area, city, PIN code' },
+        ] },
+      ] },
+    { id: 'contact', title: 'Contact & notice details', sub: 'Clause 59 — where notices to the purchaser are sent',
+      groups: [{ fields: [
+        { k: 'contact_address', label: 'Correspondence address', area: true, span: 3, ph: 'Address for notices', extra: SAME_ADDR },
+        { k: 'email', label: 'Email ID', type: 'email', ph: 'name@example.com' },
+        { k: 'phone', label: 'WhatsApp / phone number', type: 'phone', ph: '98765 43210' },
+      ] }] },
+    { id: 'unit', title: 'Unit / flat & area details', sub: `Galaxy Heights Tower ${sel.tower}`,
+      groups: [{ fields: [
+        { k: 'wing', label: 'Wing', options: TOWERS[sel.tower], ph: 'Select wing', hint: 'Pre-filled from your selection.' },
+        { k: 'unit_config', label: 'Unit configuration', options: FORM_CONFIGS, ph: 'Select configuration', hint: 'Pre-filled from your selection — this agreement is for 1 BHK flats.' },
+        { k: 'flat_no', label: 'Flat no.', ph: 'e.g. 704' },
+        { k: 'floor', label: 'Floor', ph: 'e.g. 7th', hint: 'Number only, e.g. 7th — “floor” is already in the text.' },
+        { k: 'sq_ft', label: 'RERA carpet area (Sq. Ft.)', type: 'decimal', ph: 'e.g. 450' },
+        { k: 'sq_mtrs', label: 'RERA carpet area (Sq. Mtrs.)', type: 'decimal', ph: 'e.g. 41.81', hint: 'Calculated as Sq. Ft. × 0.092903 — you can edit it.' },
+      ] }] },
+    { id: 'money', title: 'Consideration & initial booking payment', sub: 'Amounts in rupees; words fill in as you type',
+      groups: [{ fields: [
+        { k: 'agreement_value', label: 'Agreement value (Rs.)', type: 'money', ph: '63,00,000' },
+        { k: 'agreement_value_words', label: 'Agreement value in words', span: 2, ph: 'Fills in from the value' },
+        { k: 'amount_paid', label: 'Amount paid by customer (Rs.)', type: 'money', ph: '6,30,000' },
+        { k: 'amount_paid_words', label: 'Amount paid in words', span: 2, ph: 'Fills in from the amount' },
+      ] }] },
+  ];
+  const FIELD_NAMES = Object.fromEntries(SECTIONS.flatMap(s => s.groups.flatMap(g => g.fields.map(f => {
+    const prefix = g.title === 'Primary applicant' ? 'Applicant' : g.title || '';
+    return [f.k, prefix ? `${prefix} ${f.label.charAt(0).toLowerCase()}${f.label.slice(1)}` : f.label];
+  }))));
+
+  function fieldHTML(f, optional) {
+    const span = { 2: 'lg:col-span-2', 3: 'md:col-span-2 lg:col-span-3' }[f.span] || '';
+    const cls = 'control' + (f.type === 'pan' ? ' uppercase tabular-nums placeholder:normal-case' : '') + (f.type === 'money' || f.type === 'decimal' || f.type === 'phone' ? ' tabular-nums' : '');
+    const attrs = `id="${f.k}" class="${cls}" data-key="${f.k}" data-type="${f.type || ''}"${optional ? ' data-optional="1"' : ''}`;
+    let control;
+    if (f.options) {
+      control = `<select ${attrs}><option value="">${esc(f.ph)}</option>${f.options.map(o => `<option>${esc(o)}</option>`).join('')}</select>`;
+    } else if (f.area) {
+      control = `<textarea ${attrs} rows="2" placeholder="${esc(f.ph)}"></textarea>`;
+    } else {
+      const type = f.type === 'email' ? 'email' : f.type === 'phone' ? 'tel' : 'text';
+      control = `<input ${attrs} type="${type}" placeholder="${esc(f.ph)}"`
+        + (INPUTMODE[f.type] ? ` inputmode="${INPUTMODE[f.type]}"` : '')
+        + (f.type === 'pan' ? ' maxlength="10"' : '')
+        + (f.list ? ` list="${f.list}"` : '') + '>';
+    }
+    return `<div class="field ${span}">
+      <div class="lbl-row"><label class="lbl" for="${f.k}">${esc(f.label)}${optional ? '' : ' <span class="req">*</span>'}</label>${f.extra || ''}</div>
+      ${control}${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ''}<p class="err">${esc(ERR[f.type] || 'This field is required.')}</p></div>`;
+  }
+  const groupHTML = (g, optional) => `<div class="group">
+      ${g.title ? `<div class="group-head"><h3>${esc(g.title)}</h3>${g.head || ''}</div>` : ''}
+      <div class="fields"${g.wrap ? ` id="${g.wrap}"` : ''}>${g.fields.map(f => fieldHTML(f, optional)).join('')}</div>
+      ${g.wrap ? '<p class="rounded-lg border border-dashed border-line-strong px-4 py-3 text-sm text-muted" id="coOff" hidden>Single applicant — co-applicant details are left out.</p>' : ''}
+    </div>`;
+
+  $('#sections').innerHTML = SECTIONS.map((s, i) => `
+    <section class="sec" id="sec-${s.id}" data-sec>
+      <div class="sec-head">
+        <span class="sec-num">${i + 1}</span>
+        <div class="min-w-0 flex-1"><h2>${esc(s.title)}${s.optional ? '<span class="opt-pill">Optional</span>' : ''}</h2>${s.sub ? `<p class="sec-sub">${esc(s.sub)}</p>` : ''}</div>
+        ${s.action || ''}
+      </div>
+      <div class="sec-body">${s.groups.map(g => groupHTML(g, s.optional)).join('')}</div>
+    </section>`).join('');
+
+  const thisYear = new Date().getFullYear();
+  $('#sections').insertAdjacentHTML('beforeend', `<datalist id="yearList">${[-1, 0, 1, 2].map(d => `<option value="${yearWords(thisYear + d)}">`).join('')}</datalist>`);
+
+  /* Header and selection summary bar */
+  $('#userEmail').textContent = session.user;
+  $('#userInitial').textContent = session.user.charAt(0).toUpperCase();
+  $('#userBadge').title = 'Signed in as ' + session.user;
+  $('#selChips').innerHTML = [['Tower', sel.tower], ['Wing', sel.wing], ['Configuration', sel.config], ['Agreement', sel.type]]
+    .map(([l, v]) => `<span class="chip"><span class="text-muted">${l}</span><b class="font-semibold">${esc(v)}</b></span>`).join('')
+    + (dedicated ? '' : `<span class="chip border-amber-300 bg-amber-50 text-amber-900">${FORM_CONFIGS.includes(sel.config) ? 'This agreement is for Tower 3 SELF / LOAN' : 'This agreement is for 1 BHK flats'}</span>`);
+
+  /* =====================================================================
+     5. Validation
+     ===================================================================== */
+  const TESTS = {
+    pan: v => /^[A-Z]{5}\d{4}[A-Z]$/.test(v.toUpperCase()),
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v),
+    phone: v => { const d = v.replace(/\D/g, ''); return d.length === 10 || (d.length === 12 && d.startsWith('91')); },
+    money: v => toNum(v) > 0,
+    decimal: v => /^\d+(\.\d+)?$/.test(v) && Number(v) > 0,
+  };
+  const form = $('#form'), payRows = $('#payRows');
+  // Optional: the execution date and every receipt cell. An optional field may stay blank; receipt cells never block.
+  const isOptional = el => el.dataset.optional === '1' || el.hasAttribute('data-r');
+  const isValid = el => {
+    const v = clean(el.value);
+    if (!v) return isOptional(el);
+    if (el.hasAttribute('data-r')) return true;
+    const t = TESTS[el.dataset.type];
+    return t ? t(v) : true;
+  };
+  const box = el => el.closest('.field, .cell');
+  function mark(el, show) {
+    const ok = isValid(el);
+    if (show || ok) box(el).classList.toggle('invalid', !ok);
+    return ok;
+  }
+  const recheck = el => { if (box(el).classList.contains('invalid')) mark(el, true); };
+  const fieldEls = (root = form) => $$('[data-key], [data-r]', root).filter(el => !el.closest('[hidden]'));
+  const requiredEls = (root = form) => fieldEls(root).filter(el => !isOptional(el));
+
+  /* =====================================================================
+     6. Receipt rows
+     ===================================================================== */
+  const rowCapacity = () => (template ? template.rows : DEFAULT_ROWS);
+  function addRow(data) {
+    const row = $('#rowTpl').content.firstElementChild.cloneNode(true);
+    if (data) $$('[data-r]', row).forEach(el => { if (data[el.dataset.r] != null) el.value = data[el.dataset.r]; });
+    payRows.appendChild(row);
+    return row;
+  }
+  const receipts = () => $$('.r-row', payRows).map(r => {
+    const g = k => clean($(`[data-r="${k}"]`, r).value);
+    return { date: g('date'), ref: g('ref'), bank: g('bank'), amount: g('amount') };
+  });
+  const filledReceipts = () => receipts().filter(r => r.date || r.ref || r.bank || toNum(r.amount));   // blank rows are skipped
+  const receiptTotal = () => receipts().reduce((s, r) => s + toNum(r.amount), 0);
+
+  /* =====================================================================
+     7. Live state
+     ===================================================================== */
+  function applyToggles() {
+    const co = $('#hasCo').checked;
+    $('#coFields').hidden = !co;
+    $('#coOff').hidden = co;
+    const same = $('#sameAddr').checked, ca = $('#contact_address');
+    ca.readOnly = same;
+    if (same) { ca.value = $('#applicant_address').value; recheck(ca); }
+  }
+  function refresh() {
+    const rows = $$('.r-row', payRows), cap = rowCapacity();
+    rows.forEach((r, i) => {
+      $('.row-no', r).textContent = `Payment ${i + 1}`;
+      $('[data-del]', r).setAttribute('aria-label', `Delete row ${i + 1}`);
+    });
+    $('#payEmpty').hidden = rows.length > 0;
+    $('#payHead').hidden = rows.length === 0;
+    $('#addRow').disabled = rows.length >= cap;
+    $('#rowCap').textContent = rows.length > cap
+      ? `The agreement's receipt table has ${cap} rows — remove ${rows.length - cap} payment${rows.length - cap > 1 ? 's' : ''}.`
+      : `Optional · up to ${cap} payments — the receipt table in the agreement has ${cap} rows.`;
+    $('#rowCap').classList.toggle('text-red-700', rows.length > cap);
+
+    const total = receiptTotal();
+    $('#totalPaid').textContent = 'Rs. ' + (inr(total) || '0');
+    $('#totalWords').textContent = rupeesWords(total) || '—';
+
+    const paid = toNum($('#amount_paid').value);
+    const differs = total > 0 && paid > 0 && paid !== total;
+    $('#mismatch').hidden = !differs;
+    $('#mismatchVal').textContent = `Rs. ${inr(paid)} vs Rs. ${inr(total)}`;
+
+    const all = requiredEls(), done = all.filter(isValid).length;
+    $('#progressCount').textContent = `${done} / ${all.length}`;
+    $('#progressBar').style.width = (all.length ? done / all.length * 100 : 0) + '%';
+    $$('[data-sec]').forEach(s => { const els = fieldEls(s); s.classList.toggle('done', els.length > 0 && els.every(el => clean(el.value) && isValid(el))); });
+    schedulePreview();
+  }
+
+  /* Draft autosave, so going back to the selection page does not lose entries */
+  const snapshot = () => ({
+    v: Object.fromEntries($$('[data-key]').map(el => [el.dataset.key, el.value])),
+    hasCo: $('#hasCo').checked, same: $('#sameAddr').checked,
+    rows: $$('.r-row', payRows).map(r => Object.fromEntries($$('[data-r]', r).map(el => [el.dataset.r, el.value]))),
+  });
+  let saveTimer = null;
+  const saveDraft = () => { clearTimeout(saveTimer); saveTimer = setTimeout(() => store.set(KEYS.draft, snapshot()), 250); };
+  let signingOut = false;
+  const flushDraft = () => { clearTimeout(saveTimer); if (!signingOut) store.set(KEYS.draft, snapshot()); };
+
+  function load(draft) {
+    form.reset();
+    $$('.invalid', form).forEach(el => el.classList.remove('invalid'));
+    if (draft && draft.v) for (const k in draft.v) { const el = document.getElementById(k); if (el && el.matches('[data-key]')) el.value = draft.v[k]; }
+    $('#hasCo').checked = draft ? draft.hasCo !== false : true;
+    $('#sameAddr').checked = !!(draft && draft.same);
+    payRows.innerHTML = '';
+    (draft && Array.isArray(draft.rows) ? draft.rows : [null]).forEach(addRow);   // the table may be left with no rows
+    if (!draft) $('#year_words').value = yearWords(thisYear);
+    $('#wing').value = sel.wing;                 // the confirmed selection always wins
+    $('#unit_config').value = FORM_CONFIGS.includes(sel.config) ? sel.config : '';
+    applyToggles();
+    refresh();
+  }
+
+  /* =====================================================================
+     8. Events
+     ===================================================================== */
+  function formatMoney(el) {                     // Indian grouping while keeping the caret in place
+    const pos = el.selectionStart == null ? el.value.length : el.selectionStart;
+    const before = el.value.slice(0, pos).replace(/\D/g, '').length;
+    const next = inr(el.value);
+    if (next === el.value) return;
+    el.value = next;
+    let i = 0, seen = 0;
+    while (i < next.length && seen < before) { if (/\d/.test(next[i])) seen++; i++; }
+    try { el.setSelectionRange(i, i); } catch (_) { /* not focusable */ }
+  }
+  function setWords(srcId, wordsId) {
+    const out = $('#' + wordsId);
+    out.value = words($('#' + srcId).value);
+    recheck(out);
+  }
+
+  form.addEventListener('input', e => {
+    const el = e.target, k = el.dataset.key;
+    if (!el.matches('[data-key], [data-r]')) return;
+    if (el.dataset.type === 'money') formatMoney(el);
+    if (el.dataset.type === 'pan') {
+      const p = el.selectionStart;
+      el.value = el.value.toUpperCase();
+      try { el.setSelectionRange(p, p); } catch (_) { /* ignore */ }
+    }
+    if (k === 'sq_ft') {
+      const n = parseFloat(el.value);
+      $('#sq_mtrs').value = n > 0 ? trim2(n * SQM_PER_SQFT) : '';
+      recheck($('#sq_mtrs'));
+    }
+    if (k === 'agreement_value') setWords('agreement_value', 'agreement_value_words');
+    if (k === 'amount_paid') setWords('amount_paid', 'amount_paid_words');
+    if (k === 'applicant_address' && $('#sameAddr').checked) applyToggles();
+    recheck(el);
+    refresh();
+    saveDraft();
+  });
+  form.addEventListener('change', e => {
+    if (e.target.id === 'hasCo' || e.target.id === 'sameAddr') {
+      applyToggles();
+      if (e.target.id === 'hasCo') $$('#coFields .invalid').forEach(b => b.classList.remove('invalid'));
+    } else if (e.target.matches('[data-key], [data-r]')) {
+      recheck(e.target);
+    }
+    refresh();
+    saveDraft();
+  });
+  form.addEventListener('focusout', e => {
+    const el = e.target;
+    if (el.matches('[data-key], [data-r]') && clean(el.value)) mark(el, true);
+  });
+
+  $('#todayBtn').addEventListener('click', () => {
+    const d = new Date();
+    $('#day').value = ordinal(d.getDate());
+    $('#month').value = MONTHS[d.getMonth()];
+    $('#year_words').value = yearWords(d.getFullYear());
+    ['day', 'month', 'year_words'].forEach(id => mark($('#' + id), false));
+    refresh(); saveDraft();
+  });
+  $('#addRow').addEventListener('click', () => {
+    if ($$('.r-row', payRows).length >= rowCapacity()) return;
+    const row = addRow(null);
+    refresh(); saveDraft();
+    $('[data-r="date"]', row).focus();
+  });
+  payRows.addEventListener('click', e => {
+    const btn = e.target.closest('[data-del]');
+    if (!btn) return;
+    btn.closest('.r-row').remove();
+    refresh(); saveDraft();
+  });
+  $('#useTotal').addEventListener('click', () => {
+    $('#amount_paid').value = inr(receiptTotal());
+    setWords('amount_paid', 'amount_paid_words');
+    mark($('#amount_paid'), false);
+    refresh(); saveDraft();
+  });
+
+  let resetArmed = null;
+  const resetBtn = $('#resetBtn'), RESET_HTML = resetBtn.innerHTML;
+  resetBtn.addEventListener('click', () => {
+    if (!resetArmed) {                             // first click arms, second click clears
+      resetBtn.textContent = 'Confirm';
+      resetBtn.classList.add('border-red-400', 'text-red-700');
+      resetArmed = setTimeout(() => { resetBtn.innerHTML = RESET_HTML; resetBtn.classList.remove('border-red-400', 'text-red-700'); resetArmed = null; }, 3000);
+      return;
+    }
+    clearTimeout(resetArmed); resetArmed = null;
+    resetBtn.innerHTML = RESET_HTML; resetBtn.classList.remove('border-red-400', 'text-red-700');
+    store.del(KEYS.draft);
+    load(null);
+    window.scrollTo({ top: 0 });
+    toast('info', 'Form reset', 'All fields are empty again. The Word template is kept.');
+  });
+
+  $('#dummyBtn').addEventListener('click', () => {
+    const today = new Date();
+    load({
+      v: {
+        day: ordinal(today.getDate()), month: MONTHS[today.getMonth()], year_words: yearWords(today.getFullYear()),
+        applicant_name: 'Asha Ramesh Patil', applicant_pan: 'ABCPP1234K',
+        applicant_address: 'Flat 12, Shanti Niwas, S. V. Road, Malad West, Mumbai – 400064',
+        co_name: 'Rohan Suresh Patil', co_pan: 'AFGPP5678L',
+        co_address: 'Flat 12, Shanti Niwas, S. V. Road, Malad West, Mumbai – 400064',
+        email: 'asha.patil@example.com', phone: '9876543210',
+        flat_no: '704', floor: '7th', unit_config: '1 BHK', sq_ft: '450', sq_mtrs: trim2(450 * SQM_PER_SQFT),
+        agreement_value: '63,00,000', agreement_value_words: words('6300000'),
+        amount_paid: '6,30,000', amount_paid_words: words('630000'),
+      },
+      hasCo: true, same: true,
+      rows: [
+        { date: `${today.getFullYear()}-10-05`, ref: 'Cheque – 004512', bank: 'State Bank of India', amount: '1,00,000' },
+        { date: `${today.getFullYear()}-11-12`, ref: 'NEFT – N316260012345', bank: 'HDFC Bank', amount: '5,30,000' },
+      ],
+    });
+    flushDraft();
+    toast('info', 'Dummy data filled', 'Replace it with the purchaser’s real details before generating.');
+  });
+
+  $('#backBtn').addEventListener('click', e => {                 // straight back to the selection page
+    e.preventDefault();
+    flushDraft();
+    window.location.href = 'index.html';
+  });
+  window.addEventListener('pagehide', flushDraft);
+  $('#logoutBtn').addEventListener('click', () => {              // immediate: no confirmation step
+    signingOut = true;
+    clearTimeout(saveTimer);
+    store.del(KEYS.session, KEYS.selection, KEYS.draft);
+    window.location.href = 'index.html';
+  });
+
+  /* =====================================================================
+     9. Libraries (loaded from a CDN, second CDN as fallback)
+     ===================================================================== */
+  const libLoads = {};
+  function loadScript(url) {
+    return new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = url; s.onload = res; s.onerror = () => { s.remove(); rej(new Error(url)); };
+      document.head.append(s);
+    });
+  }
+  function needLib(name) {
+    if (window[name]) return Promise.resolve();
+    libLoads[name] = libLoads[name] || (async () => {
+      for (const url of LIBS[name]) {
+        if (window[name]) break;
+        try { await loadScript(url); } catch (_) { /* try the next CDN */ }
+      }
+      if (!window[name]) { libLoads[name] = null; throw new Error('A document library could not be loaded. Check your internet connection and try again.'); }
+    })();
+    return libLoads[name];
+  }
+
+  /* =====================================================================
+     10. Word template: find every <placeholder> and turn it into a field slot
+     ---------------------------------------------------------------------
+     Only the text of the placeholders changes. Paragraphs, tables, rows,
+     page breaks, section settings, headers, footers and styles are kept
+     exactly as they are in the template.
+     ===================================================================== */
+  const TOK_OPEN = '\uE000', TOK_CLOSE = '\uE001', SHADE = '\uE005', KEEP_LT = '\uE006';
+  // The original label travels inside the slot (the preview shows it while a field is empty); its < and >
+  // are stored as private characters so the placeholder search never finds the same label twice.
+  const token = (key, label) => `${TOK_OPEN}${key}|${label.replace(/&lt;/g, '\uE007').replace(/&gt;/g, '\uE008')}${TOK_CLOSE}`;
+  const labelXml = label => label.replace(/\uE007/g, '&lt;').replace(/\uE008/g, '&gt;');
+  // Labels are matched without case, spaces or punctuation, so <Sq,Ft>, <Sq. Ft> and <Sq ft> are the same field.
+  const TAGS = {
+    day: 'day', month: 'month', yearinwords: 'year_words', yearwordsin: 'year_words',
+    applicantname: 'applicant_name', nameofapplicant: 'applicant_name', applicantnamein: 'applicant_name',
+    addressofcustomer: 'applicant_address', customeraddress: 'applicant_address', pancardnumber: 'applicant_pan',
+    coapplicantname: 'co_name', nameofcoapplicant: 'co_name', coapplicantnamein: 'co_name',
+    addressofcoapplicantcustomer: 'co_address', coapplicantcustomeraddress: 'co_address', pancardnumberofcoapplicant: 'co_pan',
+    emailidofcustomer: 'email', phonenumberofcustomer: 'phone',
+    flatno: 'flat_no', flatnumber: 'flat_no', floor: 'floor', wing: 'wing',
+    sqft: 'sq_ft', sqmtrs: 'sq_mtrs', sqmeters: 'sq_mtrs', insqmeters: 'sq_mtrs',
+    unitconfiguration: 'unit_config', unitconfigration: 'unit_config',
+    amountpaidbycustomer: 'amount_paid', amountbycustomerpaid: 'amount_paid',
+    amountinword: 'amount_paid_words', amountinwords: 'amount_paid_words', amountinwordspaidbycustomer: 'amount_paid_words', amountpaidbycustomerinwords: 'amount_paid_words',
+    agreementvalue: 'agreement_value', agreementvalueinwords: 'agreement_value_words',
+    amountpaidbycustomerondate: 'p0_date', amountpaidbycustomeron: 'p0_date',
+    amountpaidthrough: 'p0_ref', amountpaidthroughbycustomer: 'p0_ref',
+    amountpaidbybankname: 'p0_bank', banknamepaidthrough: 'p0_bank', amountpaid: 'p0_amount',
+    totalamountpaidbycustomerfromabovetablelastrowofamount: 'total_paid', totalamountpaidbycustomeronabovetable: 'total_paid',
+  };
+  // The same label means different things in different clauses.
+  const CONTEXT_TAGS = {
+    booking: {                                   // "Prior to the execution of these presents …"
+      agreementvalue: BOOKING_CLAUSE_FIELD,
+      agreementvalueinwords: BOOKING_CLAUSE_FIELD === 'amount_paid' ? 'amount_paid_words' : 'agreement_value_words',
+    },
+    address: { addressofcustomer: 'contact_address' },   // Clause 59 "Address:" line = correspondence address
+  };
+  const COLS = ['date', 'ref', 'bank', 'amount'];
+  const decodeXml = s => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+  const encodeXml = s => String(s).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uE000-\uE00F\uFFFE\uFFFF]/g, '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+  const normLabel = s => decodeXml(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  const P_RE = /<w:p[ >](?:(?!<\/w:p>)[\s\S])*<\/w:p>/g;
+  const T_RE = /<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>/g;
+  const R_RE = /<w:r(?: [^>]*)?>(?:(?!<\/w:r>)[\s\S])*?<\/w:r>/g;
+  const ROW_RE = /<w:tr[ >](?:(?!<\/w:tr>)[\s\S])*<\/w:tr>/g;
+  const CELL_RE = /<w:tc>(?:(?!<\/w:tc>)[\s\S])*<\/w:tc>/g;
+  const TBL_RE = /<w:tbl>(?:(?!<\/w:tbl>)[\s\S])*<\/w:tbl>/g;
+  const plainText = x => Array.from(x.matchAll(T_RE), m => m[1]).join('');
+
+  /* Replace a pattern in the text of a paragraph even when Word has split that text across several runs. */
+  function paraReplace(p, pattern, fn) {
+    for (let guard = 0; guard < 500; guard++) {
+      const ts = Array.from(p.matchAll(T_RE));
+      const m = pattern.exec(ts.map(t => t[1]).join(''));
+      if (!m) return p;
+      const start = m.index, end = start + m[0].length, rep = fn(m);
+      let pos = 0;
+      const hit = [];
+      for (const t of ts) {
+        const a = pos, b = pos + t[1].length; pos = b;
+        if (b > start && a < end) hit.push({ t, a });
+        else if (start === end && a === start && !hit.length) hit.push({ t, a });
+      }
+      if (!hit.length) return p;
+      for (let i = hit.length - 1; i >= 0; i--) {
+        const { t, a } = hit[i], s = t[1];
+        const text = (i === 0 ? s.slice(0, Math.max(0, start - a)) + rep : '') + (i === hit.length - 1 ? s.slice(Math.max(0, end - a)) : '');
+        p = p.slice(0, t.index) + '<w:t xml:space="preserve">' + text + '</w:t>' + p.slice(t.index + t[0].length);
+      }
+    }
+    return p;
+  }
+
+  /* Run properties for a filled value: the original font and size, plus bold and black; no highlight. */
+  const RPR_ORDER = ['rStyle', 'rFonts', 'b', 'bCs', 'i', 'iCs', 'caps', 'smallCaps', 'strike', 'dstrike', 'outline', 'shadow', 'emboss', 'imprint', 'noProof', 'snapToGrid', 'vanish', 'webHidden', 'color', 'spacing', 'w', 'kern', 'position', 'sz', 'szCs', 'highlight', 'u', 'effect', 'bdr', 'shd', 'fitText', 'vertAlign', 'rtl', 'cs', 'em', 'lang', 'eastAsianLayout', 'specVanish', 'oMath'];
+  function valueRPr(rPr) {
+    const inner = (rPr || '').replace(/^<w:rPr>|<\/w:rPr>$/g, '');
+    const kids = (inner.match(/<([\w]+:[\w]+)\b[^>]*?(?:\/>|>[\s\S]*?<\/\1>)/g) || [])
+      .filter(k => !/^<w:(b|bCs|color|highlight|shd)\b/.test(k));
+    kids.push('<w:b/>', '<w:bCs/>', '<w:color w:val="000000"/>', SHADE);
+    const rank = k => {
+      if (k === SHADE) return RPR_ORDER.indexOf('shd');
+      const m = /^<w:(\w+)/.exec(k);
+      const i = m ? RPR_ORDER.indexOf(m[1]) : -1;
+      return i < 0 ? 999 : i;
+    };
+    kids.sort((a, b) => rank(a) - rank(b));
+    return '<w:rPr>' + kids.join('') + '</w:rPr>';
+  }
+  /* Give every placeholder its own run so only the filled value is bold; everything else keeps its run. */
+  function styleRun(run) {
+    if (!run.includes(TOK_OPEN)) return run;
+    const m = /^(<w:r(?: [^>]*)?>)(<w:rPr>[\s\S]*?<\/w:rPr>)?([\s\S]*)<\/w:r>$/.exec(run);
+    if (!m) return run;
+    const open = m[1], rPr = m[2] || '';
+    let out = '', pending = '';
+    const flush = () => { if (pending) { out += open + rPr + pending + '</w:r>'; pending = ''; } };
+    for (const part of m[3].split(/(<w:t(?: [^>]*)?>[\s\S]*?<\/w:t>)/)) {
+      if (!part) continue;
+      const t = /^<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>$/.exec(part);
+      if (!t || !t[1].includes(TOK_OPEN)) { pending += part; continue; }
+      flush();
+      t[1].split(/(\uE000[^\uE001]*\uE001)/).forEach((seg, i) => {
+        if (seg) out += open + (i % 2 ? valueRPr(rPr) : rPr) + '<w:t xml:space="preserve">' + seg + '</w:t></w:r>';
+      });
+    }
+    flush();
+    return out;
+  }
+  const styleTokens = xml => xml.replace(P_RE, p => (p.includes(TOK_OPEN) ? p.replace(R_RE, styleRun) : p));
+
+  /* Clause 59 "Address:", "Email ID:" and "WhatsApp Number:" lines: a hanging indent so a long value wraps under its
+     own first character, not under the label. The first line keeps its exact position: a value after a tab starts at
+     the tab stop it already reaches, and a value after a space starts right after its label. */
+  const PPR_ORDER = ['pStyle', 'keepNext', 'keepLines', 'pageBreakBefore', 'framePr', 'widowControl', 'numPr', 'suppressLineNumbers', 'pBdr', 'shd', 'tabs', 'suppressAutoHyphens', 'kinsoku', 'wordWrap', 'overflowPunct', 'topLinePunct', 'autoSpaceDE', 'autoSpaceDN', 'bidi', 'adjustRightInd', 'snapToGrid', 'spacing', 'ind', 'contextualSpacing', 'mirrorIndents', 'suppressOverlap', 'jc', 'textDirection', 'textAlignment', 'textboxTightWrap', 'outlineLvl', 'divId', 'cnfStyle', 'rPr', 'sectPr', 'pPrChange'];
+  function setPPr(pPr, name, el) {
+    const kids = (pPr.match(/<([\w]+:[\w]+)\b[^>]*?(?:\/>|>[\s\S]*?<\/\1>)/g) || []).filter(k => !new RegExp(`^<w:${name}\\b`).test(k));
+    kids.push(el);
+    const rank = k => { const m = /^<w:(\w+)/.exec(k); const i = m ? PPR_ORDER.indexOf(m[1]) : -1; return i < 0 ? 999 : i; };
+    return kids.sort((a, b) => rank(a) - rank(b)).join('');
+  }
+  const HANG_RE = /^\s*(Address|Email\s*ID|WhatsApp\s*Number)\s*:/i;
+  const hangKey = s => { const m = HANG_RE.exec(s); return m ? m[1].replace(/\s+/g, ' ').toLowerCase() : ''; };
+  function measureTw(text, sizePt) {                // width in twips (1/20 pt), Times New Roman metrics
+    try {
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.font = `${sizePt}pt "Times New Roman", Tinos, "Liberation Serif", serif`;
+      const px = ctx.measureText(text).width;
+      if (px > 0) return Math.round(px * 15);
+    } catch (_) { /* no canvas */ }
+    return Math.round(text.length * sizePt * 0.5 * 20);
+  }
+  function hangingIndent(p, info, env, tabbed) {
+    const m = /^(<w:p(?: [^>]*)?>)(?:<w:pPr>([\s\S]*?)<\/w:pPr>)?/.exec(p);
+    let pPr = m[2] || '';
+    const ind = /<w:ind\b([^>]*)\/>/.exec(pPr);
+    const num = name => { const a = ind && new RegExp(`w:${name}="(-?\\d+)"`).exec(ind[1]); return a ? Number(a[1]) : 0; };
+    const start = (num('left') || num('start')) + num('firstLine') - num('hanging');
+    const lead = decodeXml(plainText(p).split(TOK_OPEN)[0]);              // "Address:" or "WhatsApp Number: "
+    const size = env.sizePt || 12, tab = env.defaultTab || 720;
+    const valueAt = tabbed
+      ? (Math.floor((start + measureTw(lead.trim(), size)) / tab) + 1) * tab
+      : start + measureTw(lead, size);
+    if (tabbed) pPr = setPPr(pPr, 'tabs', `<w:tabs><w:tab w:val="left" w:pos="${valueAt}"/></w:tabs>`);
+    pPr = setPPr(pPr, 'ind', `<w:ind w:left="${valueAt}" w:hanging="${valueAt - start}"/>`);
+    (info.hangs = info.hangs || {})[hangKey(lead)] = { startPt: start / 20, valuePt: valueAt / 20, tabbed };
+    return m[1] + '<w:pPr>' + pPr + '</w:pPr>' + p.slice(m[0].length);
+  }
+
+  function convertTemplate(xml, env = {}) {
+    const info = { count: 0, unknown: [], blanks: {}, labels: {}, rows: 0 };
+    const note = (key, label) => {
+      info.count++;
+      const len = decodeXml(label).length;
+      (info.blanks[key] = info.blanks[key] || []).push(len);
+      info.labels[decodeXml(label)] = key;
+    };
+
+    // Receipt table: rows stay exactly as they are; each "Same as above" row and the empty last row become payment rows.
+    xml = xml.replace(TBL_RE, tbl => {
+      const text = plainText(tbl);
+      if (!/amount paid by customer on/i.test(decodeXml(text))) return tbl;
+      let n = 0;
+      return tbl.replace(ROW_RE, row => {
+        const rt = decodeXml(plainText(row));
+        if (/amount paid by customer on/i.test(rt)) { n = 1; info.rows = 1; return row; }
+        if (!n) return row;
+        const same = /Same as above/i.test(rt), empty = !rt.trim();
+        if (!same && !empty) return row;
+        const idx = n++;
+        info.rows = n;
+        let c = 0;
+        return row.replace(CELL_RE, cell => {
+          const col = COLS[c++];
+          if (!col) return cell;
+          const key = `p${idx}_${col}`;
+          if (same) {
+            return paraReplace(cell, /&lt;Same as above[^&]*&gt;/i, mm => { note(key, mm[0]); return token(key, mm[0]); });
+          }
+          // empty cell: add one run to its (empty) first paragraph, using the paragraph's own run formatting
+          return cell.replace(/<w:p[ >](?:(?!<\/w:p>)[\s\S])*?<\/w:p>/, p => {
+            const mk = /<w:pPr>[\s\S]*?<w:rPr>([\s\S]*?)<\/w:rPr>[\s\S]*?<\/w:pPr>/.exec(p);
+            const run = `<w:r>${mk ? `<w:rPr>${mk[1]}</w:rPr>` : ''}<w:t xml:space="preserve">${token(key, '')}</w:t></w:r>`;
+            return p.replace(/<\/w:p>$/, run + '</w:p>');
+          });
+        });
+      });
+    });
+
+    // Paragraphs: placeholders become field slots; spacing next to them is tidied.
+    xml = xml.replace(P_RE, p => {
+      const text = plainText(p);
+      const opening = /This agreement is made and entered into/.test(text);
+      if (!text.includes('&lt;') && !/\(Rupees _{5,}/.test(text) && !opening) return p;
+      const ctx = /Prior to the execution of these presents/.test(text) ? 'booking' : /^\s*Address\s*:/.test(text) ? 'address' : '';
+      if (opening) {                             // "on this ______ day of _______, Year Two Thousand and …"
+        p = paraReplace(p, /_{3,}(?=\s*day of)/, mm => { note('day', mm[0]); return token('day', mm[0]); });
+        p = paraReplace(p, /_{3,}(?=\s*,\s*Year)/, mm => { note('month', mm[0]); return token('month', mm[0]); });
+        p = paraReplace(p, /Two Thousand[A-Za-z\- ]*?(?=\s*\.)/, mm => { note('year_words', mm[0]); return token('year_words', mm[0]); });
+      }
+      if (/RERA Carpet Area of the said Flat is/.test(text)) {
+        p = paraReplace(p, /&lt;flat no&gt;(?= square meters)/, mm => { note('sq_mtrs', mm[0]); return token('sq_mtrs', mm[0]); });
+      }
+      p = paraReplace(p, /&lt;unit Configu?ration&gt;(?:\s*BHK)?/i, mm => { note('unit_config', mm[0]); return token('unit_config', mm[0]); });
+      p = paraReplace(p, /\(Rupees _{5,}\s*only\)/, mm => { note('amount_paid_words', '_____'); return '(Rupees ' + token('amount_paid_words', '_____') + ' only)'; });
+      p = paraReplace(p, /&lt;([^&\uE000\uE001]*?)&gt;/, mm => {
+        const label = normLabel(mm[1]);
+        const key = (ctx && CONTEXT_TAGS[ctx][label]) || TAGS[label];
+        if (!key) { info.unknown.push(decodeXml(mm[0])); return KEEP_LT + mm[1] + '&gt;'; }
+        note(key, mm[0]);
+        return token(key, mm[0]);
+      });
+      if (!p.includes(TOK_OPEN)) return p;
+      const tabbed = p.includes('<w:tab/>');     // "Address:<tab>value" already has its gap
+      p = paraReplace(p, /_+(?=\uE000)/, () => '');
+      p = paraReplace(p, tabbed ? /([A-Za-z0-9).,])(?=\uE000)/ : /([A-Za-z0-9).:,])(?=\uE000)/, mm => mm[1] + ' ');
+      p = paraReplace(p, /\s{2,}(?=\uE000)/, () => ' ');
+      p = paraReplace(p, /(\uE001)_+(?=[A-Za-z])/, mm => mm[1] + ' ');
+      p = paraReplace(p, /(\uE001)([A-Za-z0-9(])/, mm => mm[1] + ' ' + mm[2]);
+      p = paraReplace(p, /(\uE001)\s+(\/-|[.,;)])/, mm => mm[1] + mm[2]);
+      p = paraReplace(p, /(\uE001)\s{2,}(?=\S)/, mm => mm[1] + ' ');
+      if (hangKey(decodeXml(text))) p = hangingIndent(p, info, env, tabbed);
+      return p;
+    });
+
+    // Single-applicant variant: the co-applicant phrases are removed instead of being left blank.
+    const coTok = key => `\\uE000${key}\\|[^\\uE001]*\\uE001`;
+    const single = xml.replace(P_RE, p => {
+      if (!p.includes(TOK_OPEN + 'co_name|')) return p;
+      p = paraReplace(p, new RegExp(`,?\\s*AND,\\s*${coTok('co_name')}[^\\uE000]*?(?:${coTok('co_address')}[^\\uE000]*?)?${coTok('co_pan')}`), () => '');
+      p = paraReplace(p, new RegExp(`\\s*AND,\\s*${coTok('co_name')},?`), () => '');
+      return p;
+    });
+
+    const finish = x => styleTokens(x).replace(/<w:highlight w:val="yellow"\/>/g, '').replace(/\uE006/g, '&lt;');
+    return { info, withCo: finish(xml), single: finish(single) };
+  }
+
+  /* Values exactly as they are written into the agreement */
+  function docValues() {
+    const v = Object.fromEntries($$('[data-key]').map(el => [el.dataset.key, el.tagName === 'TEXTAREA' ? oneLine(el.value) : clean(el.value)]));
+    const hasCo = $('#hasCo').checked;
+    const out = {
+      day: v.day, month: v.month, year_words: v.year_words,
+      applicant_name: v.applicant_name, applicant_pan: v.applicant_pan.toUpperCase(), applicant_address: v.applicant_address,
+      co_name: hasCo ? v.co_name : '', co_pan: hasCo ? v.co_pan.toUpperCase() : '', co_address: hasCo ? v.co_address : '',
+      contact_address: v.contact_address, email: v.email, phone: v.phone,
+      flat_no: v.flat_no, floor: v.floor, wing: v.wing, unit_config: v.unit_config, sq_ft: v.sq_ft, sq_mtrs: v.sq_mtrs,
+      agreement_value: inr(v.agreement_value), agreement_value_words: v.agreement_value_words.replace(/\s*only\.?$/i, ''),
+      amount_paid: inr(v.amount_paid), amount_paid_words: v.amount_paid_words.replace(/\s*only\.?$/i, ''),
+      total_paid: receiptTotal() ? inr(receiptTotal()) : '',
+    };
+    const rows = filledReceipts();
+    for (let i = 0; i < Math.max(rowCapacity(), rows.length); i++) {
+      const r = rows[i] || {};
+      out[`p${i}_date`] = fmtDate(r.date);
+      out[`p${i}_ref`] = r.ref || '';
+      out[`p${i}_bank`] = r.bank || '';
+      out[`p${i}_amount`] = inr(r.amount);
+    }
+    out.__rows = rows.length;
+    out.__hasCo = hasCo;
+    return out;
+  }
+
+  /* Fill the field slots. Download: plain bold values. Preview: optionally tinted, empty fields show their label. */
+  function renderXml(vals, opts) {
+    const base = vals.__hasCo ? template.withCo : template.single;
+    const SHADE_FILLED = '<w:shd w:val="clear" w:color="auto" w:fill="DCEBFF"/>';
+    const SHADE_EMPTY = '<w:shd w:val="clear" w:color="auto" w:fill="FDE2E1"/>';
+    const valueFor = (key, label) => {
+      const v = vals[key];
+      if (v) return { text: encodeXml(v), filled: true };
+      if (has(BLANK_FILL, key)) {                // optional blank: the template's own text, or a line to fill in by hand
+        const own = labelXml(label);
+        return { text: own && !own.includes('&lt;') ? own : '_'.repeat(BLANK_FILL[key]), filled: false };
+      }
+      const rowIdx = /^p(\d+)_/.exec(key);
+      const optional = (rowIdx && Number(rowIdx[1]) >= vals.__rows) || !label;
+      return { text: opts.preview && !optional ? labelXml(label) : '', filled: false };
+    };
+    let xml = base.replace(/\uE005([\s\S]*?)\uE000([^|\uE001]*)\|([^\uE001]*)\uE001/g, (m, mid, key, label) => {
+      const { text, filled } = valueFor(key, label);
+      const shade = opts.mark ? (filled ? SHADE_FILLED : text ? SHADE_EMPTY : '') : '';
+      return shade + mid + text;
+    });
+    xml = xml.replace(/\uE000([^|\uE001]*)\|([^\uE001]*)\uE001/g, (m, key, label) => valueFor(key, label).text).replace(/\uE005/g, '');
+    if (/[\uE000-\uE008]/.test(xml)) throw new Error('The template could not be filled cleanly.');
+    if (opts.preview) {
+      // Word saves a "page started here" marker right after the hard break before the receipt; the preview
+      // would count that page twice, so the marker is dropped from the preview copy only.
+      xml = xml.replace(/(<w:br w:type="page"\/>)((?:(?!<w:t[ >])[\s\S])*?)<w:lastRenderedPageBreak\/>/g, '$1$2');
+    }
+    return xml;
+  }
+
+  async function buildDocx(opts = {}) {
+    await needLib('JSZip');
+    const zip = await window.JSZip.loadAsync(template.bytes);
+    zip.file('word/document.xml', renderXml(docValues(), opts), { createFolders: false });
+    return zip.generateAsync({ type: 'blob', compression: 'DEFLATE', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  }
+
+  /* How much longer each value is than its blank in the template (long values can push text onto another line). */
+  function layoutCheck() {
+    if (!template) return [];
+    const vals = docValues(), out = [];
+    for (const [key, lens] of Object.entries(template.info.blanks)) {
+      if (/^p\d+_|^total_paid$/.test(key)) continue;           // receipt cells grow inside the last page's table
+      const over = (vals[key] || '').length - Math.min(...lens);
+      if (over > 15) out.push({ key, over });
+    }
+    return out.sort((a, b) => b.over - a.over);
+  }
+  const describeCheck = list => list.map(x => `${FIELD_NAMES[x.key] || x.key} (+${x.over} characters)`).join(', ');
+
+  /* =====================================================================
+     11. Loading and remembering the template
+     ===================================================================== */
+  let template = null, tplOpen = false;
+  const toBase64 = bytes => { let s = ''; for (let i = 0; i < bytes.length; i += 8192) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192)); return btoa(s); };
+  const fromBase64 = b64 => Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+
+  /* The template card stays out of the way once a template is ready: the "Word template ✓" chip opens it again. */
+  function setTplStatus(html, ok) {
+    $('#tplStatus').innerHTML = html;
+    $('#tplStatus').classList.toggle('text-emerald-800', !!ok);
+    $('#tplBtn').textContent = template ? 'Replace' : 'Choose .docx';
+    $('#tplCard').hidden = !!template && !tplOpen;
+    $('#tplChip').hidden = !template;
+    $('#tplChip').setAttribute('aria-expanded', String(tplOpen));
+    $('#tplHide').hidden = !template;
+  }
+  function toggleTplCard(open) {
+    tplOpen = open;
+    setTplStatus($('#tplStatus').innerHTML, !!template);
+    if (open) $('#tplCard').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  $('#tplChip').addEventListener('click', () => toggleTplCard(!tplOpen));
+  $('#tplHide').addEventListener('click', () => toggleTplCard(false));
+
+  async function useTemplate(bytes, name, remember) {
+    await needLib('JSZip');
+    let zip;
+    try { zip = await window.JSZip.loadAsync(bytes); } catch (_) { throw new Error('That file is not a Word .docx document.'); }
+    const doc = zip.file('word/document.xml');
+    if (!doc) throw new Error('That file is not a Word .docx document.');
+    const settings = zip.file('word/settings.xml'), styles = zip.file('word/styles.xml');
+    const tabM = settings && /<w:defaultTabStop w:val="(\d+)"/.exec(await settings.async('string'));
+    const stylesXml = styles ? await styles.async('string') : '';
+    const normal = /<w:style w:type="paragraph" w:default="1"[\s\S]*?<\/w:style>/.exec(stylesXml);
+    const szM = /<w:sz w:val="(\d+)"/.exec(normal ? normal[0] : '') || /<w:rPrDefault>[\s\S]*?<w:sz w:val="(\d+)"/.exec(stylesXml);
+    const converted = convertTemplate(await doc.async('string'), { defaultTab: tabM ? Number(tabM[1]) : 720, sizePt: szM ? Number(szM[1]) / 2 : 12 });
+    if (!converted.info.count) throw new Error('No <placeholder> blanks were found in that document.');
+    if (remember && !store.set(KEYS.template, { name, data: toBase64(bytes), savedAt: Date.now() })) {
+      toast('info', 'Template not remembered', 'This browser’s storage is full; you’ll need to choose the file again next time.');
+    }
+    template = { name, bytes, ...converted, rows: converted.info.rows || DEFAULT_ROWS };
+    tplOpen = false;
+    const unknown = [...new Set(converted.info.unknown)];
+    setTplStatus(`✓ ${esc(name)} — ${converted.info.count} blanks mapped · receipt table: ${template.rows} rows`
+      + (unknown.length ? `<br><span class="text-amber-800">Not recognised, left as they are: ${esc(unknown.join(', '))}</span>` : ''), true);
+    refresh();
+  }
+  $('#tplFile').addEventListener('change', async e => {
+    const f = e.target.files[0];
+    e.target.value = '';
+    if (!f) return;
+    try {
+      await useTemplate(new Uint8Array(await f.arrayBuffer()), f.name, true);
+      toast('success', 'Template ready', `${template.info.count} blanks found in ${f.name}.`);
+    } catch (err) {
+      toast('error', 'Template not loaded', err.message);
+      if (!template) setTplStatus(esc(err.message));
+    }
+  });
+  /* The copy remembered on this device first, then the file next to this page (only when served from a web server). */
+  async function initTemplate() {
+    try { await needLib('JSZip'); } catch (err) { setTplStatus(esc(err.message)); return; }
+    const saved = store.get(KEYS.template);
+    try {
+      if (saved && saved.data) { await useTemplate(fromBase64(saved.data), saved.name, false); return; }
+    } catch (_) { store.del(KEYS.template); }
+    if (/^https?:$/.test(location.protocol)) {
+      for (const file of TEMPLATE_FILES) {
+        try {
+          const res = await fetch(encodeURI(file));
+          if (res.ok) { await useTemplate(new Uint8Array(await res.arrayBuffer()), file, true); return; }
+        } catch (_) { /* not there */ }
+      }
+    }
+    setTplStatus(`Choose “${esc(TEMPLATE_FILES[0])}” to turn on the live preview and the Word download. It is remembered on this device.`);
+  }
+
+  /* =====================================================================
+     12. Live preview
+     ===================================================================== */
+  const pane = $('#previewPane');
+  let pvTimer = null, pvBusy = false, pvAgain = false;
+  const docked = () => window.matchMedia('(min-width: 1536px)').matches;
+
+  function schedulePreview() {
+    if (pane.hidden || !template) return;
+    clearTimeout(pvTimer);
+    pvTimer = setTimeout(renderPreview, 600);
+  }
+  async function renderPreview() {
+    if (pane.hidden) return;
+    if (!template) { $('#pvStatus').textContent = 'Choose the Word template first.'; $('#pvDoc').innerHTML = ''; return; }
+    if (pvBusy) { pvAgain = true; return; }
+    pvBusy = true;
+    $('#pvStatus').textContent = 'Updating…';
+    try {
+      await needLib('JSZip');
+      await needLib('docx');
+      const blob = await buildDocx({ preview: true, mark: $('#pvMark').checked });
+      const body = $('#pvBody'), keep = body.scrollTop;
+      const holder = document.createElement('div');
+      await window.docx.renderAsync(blob, holder, null, {
+        className: 'docx', inWrapper: true, breakPages: true, ignoreLastRenderedPageBreak: false,
+        ignoreWidth: false, ignoreHeight: false, renderHeaders: true, renderFooters: true, renderFootnotes: true, useBase64URL: true,
+      });
+      holder.querySelectorAll('section.docx').forEach(sec => {      // safety net: never show a blank page
+        const body = sec.querySelector('article') || sec;
+        if (!body.textContent.trim() && !body.querySelector('img, svg, table')) sec.remove();
+      });
+      // Clause 59: each "Address:", "Email ID:" and "WhatsApp Number:" line keeps its label where Word puts it, and a
+      // long value wraps under its own first character, as the hanging indent written into the Word file does.
+      const hangs = template.info.hangs || {};
+      holder.querySelectorAll('section.docx p').forEach(p => {
+        const hang = hangs[hangKey(p.textContent)];
+        if (!hang) return;
+        const kids = [...p.childNodes];
+        const at = kids.findIndex(k => k.textContent.length && !k.textContent.replace(/[\u2003\t ]/g, '').length);
+        if (!hang.tabbed || at < 1) {           // value straight after the label: a plain hanging indent
+          Object.assign(p.style, { marginLeft: `${hang.valuePt}pt`, paddingLeft: '0', textIndent: `${hang.startPt - hang.valuePt}pt` });
+          return;
+        }
+        const label = document.createElement('span'), value = document.createElement('span');
+        label.style.cssText = `flex:0 0 ${hang.valuePt - hang.startPt}pt`;
+        value.style.cssText = 'flex:1 1 auto;min-width:0';
+        label.append(...kids.slice(0, at));
+        value.append(...kids.slice(at + 1));
+        p.replaceChildren(label, value);
+        Object.assign(p.style, { display: 'flex', alignItems: 'baseline', textIndent: '0', paddingLeft: '0', marginLeft: `${hang.startPt}pt` });
+      });
+      // The footer's "Page X of Y" fields hold the numbers Word last saved; show the real ones (Word updates them itself).
+      const secs = holder.querySelectorAll('section.docx');
+      secs.forEach((sec, i) => {
+        const foot = sec.querySelector('footer');
+        if (!foot) return;
+        const walk = document.createTreeWalker(foot, NodeFilter.SHOW_TEXT), nums = [];
+        for (let n = walk.nextNode(); n; n = walk.nextNode()) if (/^\s*\d+\s*$/.test(n.nodeValue)) nums.push(n);
+        if (nums[0]) nums[0].nodeValue = String(i + 1);
+        if (nums[1]) nums[1].nodeValue = String(secs.length);
+      });
+      $('#pvDoc').replaceChildren(...holder.childNodes);
+      fitPreview();
+      body.scrollTop = keep;
+      const pages = $$('#pvDoc section.docx').length;
+      const time = new Date().toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' });
+      $('#pvStatus').textContent = `${pages} pages, split where Word placed the page breaks in the template · updated ${time}`;
+      const over = layoutCheck();
+      $('#pvCheck').hidden = !over.length;
+      $('#pvCheck').textContent = over.length ? `Longer than the blank in the template: ${describeCheck(over)}. The paragraph may run onto an extra line.` : '';
+    } catch (err) {
+      $('#pvStatus').textContent = 'Preview unavailable: ' + err.message;
+    } finally {
+      pvBusy = false;
+      if (pvAgain) { pvAgain = false; schedulePreview(); }
+    }
+  }
+  function fitPreview() {
+    const doc = $('#pvDoc'), page = $('#pvDoc section.docx');
+    if (!page) return;
+    doc.style.zoom = '';
+    const scale = Math.min(1, ($('#pvBody').clientWidth - 8) / (page.offsetWidth + 24));
+    doc.style.zoom = scale < 1 ? String(scale) : '';
+  }
+  function openPreview() {
+    $('#toasts').innerHTML = '';
+    pane.hidden = false;
+    document.body.classList.toggle('pv-docked', docked());
+    lockScroll();
+    $('#pvClose').focus();
+    renderPreview();
+  }
+  function closePreview() {
+    pane.hidden = true;
+    clearTimeout(pvTimer);
+    document.body.classList.remove('pv-docked');
+    lockScroll();
+    $('#previewBtn').focus();
+  }
+  $('#previewBtn').addEventListener('click', () => {
+    if (!template) { $('#tplCard').scrollIntoView({ block: 'center', behavior: 'smooth' }); toast('error', 'Choose the Word template first', 'Use “Choose .docx” and pick the draft agreement.'); return; }
+    if (pane.hidden) openPreview(); else closePreview();
+  });
+  $('#pvClose').addEventListener('click', closePreview);
+  $('#pvMark').addEventListener('change', renderPreview);
+  pane.addEventListener('click', e => { if (e.target === pane) closePreview(); });
+  $('#pvDownload').addEventListener('click', () => requestGenerate());
+  window.addEventListener('resize', () => {
+    if (pane.hidden) return;
+    const d = docked();
+    document.body.classList.toggle('pv-docked', d);
+    lockScroll();
+    fitPreview();
+  });
+
+  /* =====================================================================
+     13. Generate: validate, save the JSON payload, confirm, then build and download the agreement
+     ===================================================================== */
+  function buildPayload() {
+    const v = Object.fromEntries($$('[data-key]').map(el => [el.dataset.key, el.tagName === 'TEXTAREA' ? oneLine(el.value) : clean(el.value)]));
+    const hasCo = $('#hasCo').checked;
+    const co = k => (hasCo ? v[k] : '');
+    const rows = filledReceipts();
+    const total = receiptTotal();
+    const pan = s => s.toUpperCase();
+
+    const placeholders = {
+      '<Day>': v.day,
+      '<Month>': v.month,
+      '<Year Words in>': v.year_words,
+      '<applicant name>': v.applicant_name,
+      '<customer address>': v.applicant_address,
+      '<pan card number>': pan(v.applicant_pan),
+      '<co-applicant name>': co('co_name'),
+      '<co-applicant customer address>': co('co_address'),
+      '<pan card number of co-applicant>': pan(co('co_pan')),
+      '<address of customer>': v.contact_address,
+      '<email id of customer>': v.email,
+      '<phone number of customer>': v.phone,
+      '<wing>': v.wing,
+      '<unit Configuration>': v.unit_config,
+      '<flat no>': v.flat_no,
+      '<floor>': v.floor,
+      '<Sq.Ft>': v.sq_ft,
+      '<Sq.Mtrs>': v.sq_mtrs,
+      '<agreement value>': inr(v.agreement_value),
+      '<agreement value in words>': v.agreement_value_words,
+      '<Amount by customer paid>': inr(v.amount_paid),
+      '<Amount In word>': v.amount_paid_words,
+      '<total amount paid by customer from above table last row of amount>': inr(total),
+    };
+
+    const payload = {
+      version: 1,
+      generatedAt: new Date().toISOString(),
+      generatedBy: session.user,
+      template: template ? template.name : null,
+      selection: { tower: sel.tower, wing: sel.wing, configuration: sel.config, agreementType: sel.type, hasDedicatedForm: dedicated },
+      executionDate: { day: v.day, month: v.month, yearInWords: v.year_words },
+      applicant: { name: v.applicant_name, address: v.applicant_address, pan: pan(v.applicant_pan) },
+      coApplicant: { included: hasCo, name: co('co_name'), address: co('co_address'), pan: pan(co('co_pan')) },
+      contact: { correspondenceAddress: v.contact_address, email: v.email, phone: v.phone },
+      unit: { wing: v.wing, configuration: v.unit_config, flatNo: v.flat_no, floor: v.floor, sqFt: Number(v.sq_ft), sqMtrs: Number(v.sq_mtrs) },
+      consideration: {
+        agreementValue: toNum(v.agreement_value), agreementValueFormatted: inr(v.agreement_value), agreementValueInWords: v.agreement_value_words,
+        amountPaid: toNum(v.amount_paid), amountPaidFormatted: inr(v.amount_paid), amountPaidInWords: v.amount_paid_words,
+      },
+      receipts: rows.map(r => ({ date: fmtDate(r.date), reference: r.ref, bank: r.bank, amount: toNum(r.amount), amountFormatted: inr(r.amount) })),
+      receiptTotal: { amount: total, formatted: inr(total), inWords: rupeesWords(total) },
+      placeholders,
+      receiptPlaceholders: rows.map(r => ({
+        '<amount paid by customer on date>': fmtDate(r.date),
+        '<amount paid through>': r.ref,
+        '<amount paid by bank name>': r.bank,
+        '<amount paid>': inr(r.amount),
+      })),
+    };
+    if (template) {                                           // the template's own labels, as written in the .docx
+      const dv = docValues();
+      payload.templateFields = Object.fromEntries(Object.entries(template.info.labels)
+        .filter(([label, key]) => label && !/^p\d+_/.test(key)).map(([label, key]) => [label, dv[key] || '']));
+    }
+    return payload;
+  }
+
+  function fileName() {
+    const safe = (v, fallback) => clean(v).replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || fallback;
+    return `Agreement_Galaxy_Heights_Flat_${safe($('#flat_no').value, 'FlatNo')}_${safe($('#applicant_name').value, 'Applicant')}.docx`;
+  }
+  function download(blob, name) {
+    const url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+  }
+
+  /* Confirmation card with two actions only: Generate Document and Cancel */
+  const confirmModal = $('#confirmModal'), confirmGo = $('#confirmGenerate'), GO_HTML = confirmGo.innerHTML;
+  let generating = false;
+  function lockScroll() {
+    document.body.style.overflow = !confirmModal.hidden || (!pane.hidden && !docked()) ? 'hidden' : '';
+  }
+  function requestGenerate() {
+    const bad = requiredEls().filter(el => !mark(el, true));   // the execution date and the receipt table are optional
+    if (bad.length) {
+      if (!pane.hidden && !docked()) closePreview();
+      bad[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+      bad[0].focus({ preventScroll: true });
+      toast('error', `${bad.length} field${bad.length > 1 ? 's need' : ' needs'} attention`, 'Complete the fields marked in red, then generate again.');
+      return;
+    }
+    const cap = rowCapacity();
+    if (filledReceipts().length > cap) {
+      if (!pane.hidden && !docked()) closePreview();
+      $('#sec-receipts').scrollIntoView({ block: 'center', behavior: 'smooth' });
+      toast('error', 'Too many payment rows', `The agreement's receipt table has ${cap} rows. Remove the extra payments.`);
+      return;
+    }
+    flushDraft();
+    if (!store.set(KEYS.payload, buildPayload())) toast('error', 'Could not save', 'This browser blocked local storage, so the details were not saved on this device.');
+    if (!template) {
+      if (!pane.hidden && !docked()) closePreview();
+      $('#tplCard').scrollIntoView({ block: 'center', behavior: 'smooth' });
+      toast('error', 'Choose the Word template first', 'Your details are saved. Use “Choose .docx” to pick the draft agreement, then generate again.');
+      return;
+    }
+    $('#toasts').innerHTML = '';
+    confirmModal.hidden = false;
+    lockScroll();
+    confirmGo.focus();
+  }
+  function closeConfirm() {
+    if (generating) return;
+    confirmModal.hidden = true;
+    lockScroll();
+    $('#generateBtn').focus();
+  }
+  async function generateDocument() {
+    if (generating) return;
+    generating = true;
+    confirmGo.disabled = $('#confirmCancel').disabled = true;
+    confirmGo.innerHTML = '<span class="spin h-[18px] w-[18px] flex-none rounded-full border-[2.5px] border-white/35 border-t-white"></span>Generating…';
+    let result;
+    try {
+      store.set(KEYS.payload, buildPayload());
+      const blob = await buildDocx({});
+      result = { name: fileName() };
+      download(blob, result.name);
+    } catch (err) {
+      result = { error: err.message };
+    }
+    generating = false;
+    confirmGo.disabled = $('#confirmCancel').disabled = false;
+    confirmGo.innerHTML = GO_HTML;
+    closeConfirm();
+    if (result.error) toast('error', 'Word file not created', result.error);
+    else toast('success', 'Agreement downloaded', result.name);
+  }
+  confirmGo.addEventListener('click', generateDocument);
+  $('#confirmCancel').addEventListener('click', closeConfirm);
+  confirmModal.addEventListener('click', e => { if (e.target === confirmModal) closeConfirm(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!confirmModal.hidden) closeConfirm();
+    else if (!pane.hidden) closePreview();
+  });
+  form.addEventListener('submit', e => { e.preventDefault(); requestGenerate(); });
+
+  /* =====================================================================
+     14. Toasts and start
+     ===================================================================== */
+  function toast(kind, title, text) {
+    const t = document.createElement('div');
+    t.className = 'toast fade-in ' + kind;
+    t.innerHTML = `<b class="block text-sm">${esc(title)}</b><span class="text-[13px] break-words text-muted">${esc(text || '')}</span>`;
+    $('#toasts').append(t);
+    setTimeout(() => t.remove(), kind === 'error' ? 8000 : 5000);
+  }
+
+  load(store.get(KEYS.draft));
+  initTemplate().catch(err => setTplStatus(esc(err.message)));
+})();
+</script>
+</body>
+</html>
